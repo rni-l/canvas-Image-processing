@@ -59,7 +59,7 @@ body{-webkit-touch-callout: none; -webkit-text-size-adjust: none; -webkit-user-s
 	//侧边栏
 	#aside{
 		width:75px;height: 100%;top: 0;right: 0;background:#F37676;height: 100%;position: absolute;
-	opacity: 0;
+	opacity: 0;@include transform(translateX(200px));
 	}
 	//按钮
 	.asideBtn{

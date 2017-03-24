@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
 		ctx = oCan.getContext('2d'),
 		oColor = document.querySelector('.color_show'),
 		oZhezhao = document.querySelector('.color_zhezhao'),
-		imgSrc = require('./../images/wheel.png'),
+		/*imgSrc = require('./../images/wheel.png'),*/
 		top = oCan.offsetTop,
 		left = oCan.offsetLeft
 
@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
 	img.onload = function() {
 		ctx.drawImage(this, 0, 0, 200, 200)
 	}
-	img.src = imgSrc;
+	img.src = 'http://omj3gjq3r.bkt.clouddn.com/wheel.png';
 	//width:20
 	function pick(e) {
 		var t = e.touches[0],
