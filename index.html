@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+	<!-- <link rel="stylesheet" href="dist/style.css"> -->
+</head>
+<body>
+<!-- 内容 -->
+<div class="main oh pos_r">
+	<!-- top -->
+	<section class="main_top">
+		<!-- 展示图片,编辑图片画布 -->
+	  <canvas height='300' id='canvas'></canvas>
+	  <!-- 最终生成的图片 -->
+	  <img src="" id='lastImg' alt="">
+	</section>
+	<!-- bottom -->
+	<section class="main_bottom flex f_jc_sa f_ai_center">
+		<!-- 上传图片按钮 -->
+	  <input type="file" id='file' accept="image/*">
+	  <!-- 生成图片按钮 -->
+	  <div id='cretea' class='dn'>生成图片</div>
+	  <!-- 侧边栏按钮 -->
+	  <div class="asideBtn">工具</div>
+	</section>
+	<!-- 侧边栏 -->
+	<div id="aside">
+		<div class="aside_wrap flex f_dire_c f_jc_sa f_ai_center">
+			<!-- 颜色按钮 -->
+		  <div class="colorWrap"></div>	
+		  <div class="rangeWrap">
+			  <!-- 线条粗细 -->
+			  <div class='rangeLine pos_r'>
+			  	<div class='rangeBtn pos_a user_select'></div>
+			  </div>
+			  <p>宽度：5</p>
+		  </div>
+		  
+		  <!-- 选择图片放大方式 -->
+		  <select  id="selectPicSize" >
+		  	<option value="1">居中</option>	
+		  	<option value="2">填充</option>
+		  	<option value="3">适应</option>
+		  	<option value="4">拉伸</option>
+		  </select>
+		  <!-- close -->
+		  <div class="aside_hideBtn">关闭</div>
+		</div>
+		
+	</div>
+	<!-- 提示层 -->
+	<div class="zhezhao pos_a"></div>
+	<div class='msg pos_a'>正在处理中...</div>
+	<!-- 颜色 -->
+	<div class="color_zhezhao pos_a dn"></div>
+	<canvas id='color' class='pos_a dn' width='200' height='200'></canvas>
+	<div class="color_show pos_a dn"></div>
+</div>
+	<script src='dist/vendors.js'></script>
+	<script src='dist/bundle.js'></script>
+</body>
+</html>

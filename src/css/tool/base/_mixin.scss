@@ -1,0 +1,181 @@
+//all style public mixin
+
+/* css background-linear-gradient */
+	@mixin l_g($dir, $f, $l) {
+	    background: -webkit-linear-gradient($dir, $f, $l);
+	    background: linear-gradient($dir, $f, $l);
+	}
+
+// animation
+	@mixin animation($attr...){
+	    -webkit-animation:$attr;
+	    animation:$attr;
+	}
+	@mixin animationDelay($attr...){
+	    -webkit-animation-delay:$attr;
+	    animation-delay:$attr;
+	}
+	@mixin animationIterationCount($attr...){
+	    -webkit-animation-iteration-count:$attr;
+	    animation-iteration-count:$attr;
+	}
+	@mixin animationFillMode($attr){
+	    -webkit-animation-fill-mode:$attr;
+	    animation-fill-mode:$attr;
+	}
+	@mixin perspective($a){
+		-webkit-perspective:$a;
+		perspective:$a;
+	}
+	@mixin transfrom3d{
+		-webkit-transform-style:preserve-3d;
+		transform-style:preserve-3d;
+	}
+
+/* transtion */
+
+@mixin transition($attr...) {
+    -webkit-transition: $attr;
+    transition: $attr;
+}
+
+/* transform */
+	@mixin transform($attr...) {
+	    -webkit-transform: $attr;
+	    transform: $attr;
+	}
+	@mixin transformOrigin($attr...) {
+	    -webkit-transform-origin: $attr;
+	    transform-origin: $attr;
+	}
+
+// shadow
+	@mixin shadow($attr...){
+	    -webkit-box-shadow:$attr;
+	    box-shadow:$attr;
+	}
+// opacity
+	@mixin opacity($attr){
+	    -webkit-opacity:$attr;
+	    opacity:$attr;
+	}
+
+//radius
+	@mixin radius($attr...){
+	    -webkit-border-radius:$attr;
+	    border-radius:$attr;
+	}
+
+//calc-width
+	@mixin calc($num...){
+	    width:-webkit-calc(#{$num});
+	    width:calc(#{$num});
+	}
+//user-select
+ @mixin user_select{
+ 	-webkit-user-select:none;-moz-user-select:none;-o-user-select:none;user-select:none;
+ }
+//单行文字溢出隐藏
+	@mixin txt_hide{
+		 text-overflow: ellipsis;overflow: hidden;white-space: nowrap;
+	}
+//绝对剧中
+@mixin pos_center{
+	position:absolute;top:0;left:0;right:0;bottom:0;margin:auto;
+}
+
+//flexbox
+	@mixin flex {
+	    display: -webkit-flex;
+	    display: flex;
+	}
+
+	@mixin f_wrap {
+	    -webkit-flex-wrap: wrap;
+	    flex-wrap: wrap;
+	}
+	// justify-content
+		@mixin f_jc_center {
+		    -webkit-justify-content: center;
+		    justify-content: center;
+		}
+
+		@mixin f_jc_end {
+		    -webkit-justify-content: flex-end;
+		    justify-content: flex-end;
+		}
+
+		@mixin f_jc_sb {
+		    -webkit-justify-content: space-between;
+		    justify-content: space-between;
+		}
+
+		@mixin f_jc_sa {
+		    -webkit-justify-content: space-around;
+		    justify-content: space-around;
+		}
+
+	// align-items
+		@mixin f_ai_center {
+		    -webkit-align-items: center;
+		    align-items: center;
+		}
+
+		@mixin f_ai_start {
+		    -webkit-align-items: flex-start;
+		    align-items: flex-start;
+		}
+
+		@mixin f_ai_end {
+		    -webkit-align-items: flex-end;
+		    align-items: flex-end;
+		}
+	//align-content
+		@mixin f_ac_sb {
+		    -webkit-align-content: space-between;
+		    align-content: space-between;
+		}
+
+		@mixin f_ac_sa {
+		    -webkit-align-content: space-around;
+		    align-content: space-around;
+		}
+
+		@mixin f_ac_stretch {
+		    -webkit-align-content: stretch;
+		    align-content: stretch;
+		}
+
+		@mixin f_ac_center {
+		    -webkit-align-content: center;
+		    align-content: center;
+		}
+		@mixin f_ac_end {
+		    -webkit-align-content: flex-end;
+		    align-content: flex-end;
+		}
+
+	//align-self
+		@mixin f_as_cen {
+		    -webkit-align-self: center;
+		    align-self: center;
+		}
+
+		@mixin f_as_stretch {
+		    -webkit-align-self: stretch;
+		    align-self: stretch;
+		}
+
+	@mixin f_ord($ord) {
+	    -webkit-order: $ord;
+	    order: $ord;
+	}
+
+	@mixin f_dire_c {
+	    -webkit-flex-direction: column;
+	    flex-direction: column;
+	}
+	@mixin f_grow($attr:1){
+	    -webkit-flex:$attr;
+	    flex:$attr;
+	}

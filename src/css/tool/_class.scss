@@ -1,0 +1,71 @@
+@import 'base/mixin';
+@import 'base/media';
+@import 'animation';
+//reset html font-size
+@function t($px) {
+    @return $px / 24 * 1rem;
+}
+
+//flex class
+  .flex { @include flex;}
+
+  .f_wrap {@include f_wrap;}
+  .f_dire_c{@include f_dire_c;}
+  .f_grow{@include f_grow;}
+
+  .f_jc_center {@include f_jc_center;}
+  .f_jc_end {@include f_jc_end;}
+  .f_jc_sb {@include f_jc_sb;}
+  .f_jc_sa {@include f_jc_sa;}
+
+  .f_ac_sb {@include f_ac_sb;}
+  .f_ac_sa {@include f_ac_sa;}
+  .f_ac_stretch {@include f_ac_stretch;}
+  .f_ac_center {@include f_ac_center;}
+  .f_ac_end{@include f_ac_end;}
+
+  .f_ai_center {@include f_ai_center;}
+  .f_ai_start {@include f_ai_start;}
+  .f_ai_center {@include f_ai_center;}
+  .f_ai_end {@include f_ai_end;}
+
+  .f_as_stretch {@include f_as_stretch;}
+  .f_as_cen {@include f_as_cen;}
+
+.transfrom3d{@include transfrom3d;}
+//清除浮动
+.clearfix{}
+.clearfix:after{content:" ";display:block;visibility:hidden;clear:both;height:0;font-size:0;}
+//布局，定位
+.db{display: block;}
+.dn{display: none;}
+.d_ib{display:inline-block;vertical-align: top;}
+.d_ib_m{display: inline-block;vertical-align: middle;}
+// position
+.pos_r{position:relative;}
+.pos_a{position:absolute;}
+.pos_center{@include pos_center;}
+//text-align
+.tr{text-align: right;}
+.tl{text-align:left;}
+.tc{text-align:center;}
+//float
+.fl{float:left;}
+.fr{float:right;}
+.oh{overflow: hidden;}
+//margin
+.mar_center{margin-left:auto;margin-right:auto;}
+// vertical */
+.va_b{vertical-align: baseline;}
+.va_t{vertical-align: top;}
+.va_m{vertical-align:middle;}
+.fw_b{font-weight: bold;}
+// 单行文字溢出隐藏
+.txt_hide{@include txt_hide; }
+.fs0{font-size:0;}
+// 盒子border-box
+.box_border{box-sizing: border-box;}
+// 禁止选择文字
+.user_select{@include user_select;}
+
+.bg_white{background-color: white;}
