@@ -15,6 +15,10 @@ document.querySelector('.main').addEventListener('touchmove',function(e){
 	e.preventDefault();
 },false)
 
+opts.oRevoke.addEventListener('touchstart',function(e){
+	draw.revoke();
+})
+
 
 opts.canvasW = opts.oTop.offsetWidth
 opts.canvasH = opts.oTop.offsetHeight

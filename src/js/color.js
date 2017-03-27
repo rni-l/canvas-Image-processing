@@ -7,10 +7,11 @@ document.addEventListener('DOMContentLoaded', function(e) {
 		ctx = oCan.getContext('2d'),
 		oColor = document.querySelector('.color_show'),
 		oZhezhao = document.querySelector('.color_zhezhao'),
-		imgSrc = require('../images/wheel.png'),
+		imgSrc = require('./../images/wheel.png'),
 		top = oCan.offsetTop,
 		left = oCan.offsetLeft
 
+		console.log(imgSrc)
 
 	var img = new Image();
 	img.onload = function() {
@@ -23,7 +24,6 @@ document.addEventListener('DOMContentLoaded', function(e) {
 			x = t.pageX - left,
 			y = t.pageY - top
 		var d = Math.sqrt(Math.pow((x - 100), 2) + Math.pow((y - 100), 2))
-		console.log(d)
 		if (!(d >= 80 & d <= 100)) {
 			return false;
 		}

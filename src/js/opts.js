@@ -6,7 +6,8 @@ var oCan = document.getElementById('canvas'),//获取画布
     oTop = document.querySelector('.main_top'),
   	oCreateBtn = document.getElementById('cretea'),//生成图片按钮
   	oMsg = document.querySelector('.msg'),
-  	oZhezhao = document.querySelector('.zhezhao')
+  	oZhezhao = document.querySelector('.zhezhao'),
+  	oRevoke = document.getElementById('revoke')//撤销按钮
 
 //公共方法
 function msg(type){
@@ -23,6 +24,7 @@ function msg(type){
 		oCreateBtn:oCreateBtn,
 		oMsg : oMsg,
 		oZhezhao : oZhezhao,
+		oRevoke : oRevoke,
 		//方法
 		msg:msg,
 		isDraw:false,//能否涂鸦

@@ -11,6 +11,10 @@ body{-webkit-touch-callout: none; -webkit-text-size-adjust: none; -webkit-user-s
 		height: 15%;background:#EAC7C7;
 	}
 
+	.main{
+		-webkit-touch-action: none; -ms-touch-action: none;touch-action: none; 
+	}
+
 #canvas{
 	
 }
@@ -22,7 +26,7 @@ body{-webkit-touch-callout: none; -webkit-text-size-adjust: none; -webkit-user-s
 }
 	//上传文件按钮
 	#file{
-		width:30%;
+		width:80px;
 	}
 	#cretea {
 	  width: 30%;
@@ -40,6 +44,12 @@ body{-webkit-touch-callout: none; -webkit-text-size-adjust: none; -webkit-user-s
 	.msg{
 		width: 80%;padding:20px 0;font-size:20px;text-align: center;background:white;
 		top:50%;margin-top: -20px;left:10%;display: none;color:#BC6666;
+	}
+
+	//撤销
+	#revoke{
+		font-size:12px;font-weight: bold;padding:10px;background:#C0C0C0;
+		border-radius: 10px;
 	}
 
 	//color选择器
