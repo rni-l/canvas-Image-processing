@@ -1,6 +1,6 @@
 # 这是一个H5拍照，编辑图片，生成图片的DEMO
 
-[demo](https://yiiouo.github.io/canvas-Image-processing/)，不过颜色选择器那里有问题，好像github没有设置跨域头，所以报错了。原本我是用webpack打包那张图片的，但是上传到github后，图片路径就报错了，所以现在还没解决。
+这里是[demo](https://yiiouo.github.io/canvas-Image-processing/)链接。
 
 使用了webpack进行文件处理，exif.js解决ios图片旋转问题，fastclick.js处理移动端点击延迟问题。
 
@@ -16,4 +16,6 @@
 
 如果要传给后台的话，只需要把图片转成blod，再用formData上传。
 
-**不能直接在本地打开，要开启服务器才行，因为图片跨域问题。**
+3.27更新：
+1.添加笔触撤销功能
+2.添加了离线存储功能，在没有网络下，再次打开页面，也可以进行操作。
