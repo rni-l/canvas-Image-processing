@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" manifest="test.manifest">
+<html lang="en" >
+<!-- manifest="test.manifest" -->
 <head>
   <meta charset="UTF-8">
   <title>Document</title>
@@ -31,7 +32,7 @@
 	<div id="aside">
 		<div class="aside_wrap flex f_dire_c f_jc_sa f_ai_center">
 			<!-- 颜色按钮 -->
-		  <div class="colorWrap"></div>	
+		  <div class="colorBtn"></div>	
 		  <div class="rangeWrap">
 			  <!-- 线条粗细 -->
 			  <div class='rangeLine pos_r'>
@@ -57,7 +58,10 @@
 	<div class='msg pos_a'>正在处理中...</div>
 	<!-- 颜色 -->
 	<div class="color_zhezhao pos_a dn"></div>
-	<canvas id='color' class='pos_a dn' width='200' height='200'></canvas>
+	<div class='colorPickerbox'>
+    <canvas id='colorPicker'></canvas>
+    <div class="btnWrap"></div>
+  </div>
 	<div class="color_show pos_a dn"></div>
 </div>
 	<script src='dist/vendors.js'></script>

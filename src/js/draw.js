@@ -1,5 +1,5 @@
 import opts from './opts'
-import lineData from './color'
+import lineData from './lineData'
 import photograph from './photograph'
 var arrX = [],
 	arrY = [],

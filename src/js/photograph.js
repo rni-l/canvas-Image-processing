@@ -273,7 +273,8 @@ oAsideBtn.addEventListener('touchstart', function(e) {
 })
 document.querySelector('.aside_hideBtn').addEventListener('touchstart', function(e) {
 	opts.isDraw = true;
-	oAside.className = 'aside_hide'
+	oAside.className = 'aside_hide';
+	document.querySelector('.colorPickerbox').style.transform = 'translateX(-1000px)';
 })
 
 function getData(){

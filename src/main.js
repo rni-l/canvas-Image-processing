@@ -2,7 +2,7 @@ require('./css/style');
 import opts from 'opts'
 import photo from './js/photograph'
 import draw from './js/draw'
-import color from './js/color'
+import lineData from './js/lineData'
 import Fastclick from './js/fastclick'
 document.addEventListener('DOMContentLoaded', function() {
 		Fastclick.attach(document.body);
