@@ -12,7 +12,7 @@ module.exports = {
 	},
 	output: {
 		path: BUILD_PATH,
-		publicPath: './dist/',
+		publicPath: (process.env.NODE_ENV === 'production' ? '.' : '') + '/dist/',
 		filename: 'bundle.js'
 	},
 	devServer: {
