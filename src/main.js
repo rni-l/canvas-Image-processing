@@ -4,17 +4,22 @@ import photo from './js/photograph'
 import draw from './js/draw'
 import lineData from './js/lineData'
 import Fastclick from './js/fastclick'
+import filter from './js/filter'
 document.addEventListener('DOMContentLoaded', function() {
 		Fastclick.attach(document.body);
-	}, false);
+}, false);
 
 var oCan = opts.oCan,
 	ctx = opts.ctx
 
 document.querySelector('.main').addEventListener('touchmove',function(e){
-	e.preventDefault();
+	if(opts.isStopPrevent){
+		e.preventDefault();
+	}
+	
 },false)
 
+//撤销事件
 opts.oRevoke.addEventListener('touchstart',function(e){
 	draw.revoke();
 })

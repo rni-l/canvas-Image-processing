@@ -49,14 +49,14 @@
       for (var i = 0; i < 360; i += .1) {
         //获取度数
         var rad = i * (2 * Math.PI) / 360,
-          c_x = Math.cos(rad),
-          c_y = Math.sin(rad),
+          angleX = Math.cos(rad),
+          angleY = Math.sin(rad),
           lineW = this.lineW
         ctx.strokeStyle = "hsl(" + i + ", 100%, 50%)";
         ctx.beginPath();
-        ctx.moveTo(x + (x - lineW) * c_x, y + (y - lineW) * c_y);
+        ctx.moveTo(Math.ceil(x + (x - lineW) * angleX), Math.ceil(y + (y - lineW) * angleY));
         //求出另外两点坐标
-        ctx.lineTo(x + x * c_x, y + y * c_y);
+        ctx.lineTo(Math.ceil(x + x * angleX), Math.ceil(y + y * angleY));
         ctx.stroke();
         ctx.closePath();
       }
@@ -67,6 +67,8 @@
 
       //给予事件
       this.oCan.addEventListener('touchstart', function(e) {
+        e.stopPropagation();
+        e.preventDefault();
         //获取canvas的left ,top 位置
         if (!_this.oCan_left) {
           var canPos = _this.getElemPos(_this.oCan)
@@ -78,6 +80,8 @@
         document.addEventListener('touchmove', move, false);
       }, false);
       this.oCan.addEventListener('touchend', function(e) {
+        e.stopPropagation();
+        e.preventDefault();
         //移出事件
         document.removeEventListener('touchmove', move, false);
       }, false);
@@ -109,6 +113,8 @@
       ctx.fillRect(iX, iX, iW, iW);
     },
     move: function(e) {
+      e.stopPropagation();
+      e.preventDefault();
       //移动事件
       var t = e.touches[0],
         x = t.pageX - this.oCan_left,
@@ -230,4 +236,3 @@ if (typeof(module) !== 'undefined') {
     return window.ColorPicker;
   });
 }
-

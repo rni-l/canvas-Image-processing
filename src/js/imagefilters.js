@@ -2026,3 +2026,4 @@ ImageFilters.Twril = function (srcImageData, centerX, centerY, radius, angle, ed
     return dstImageData;
 };
 
+export default ImageFilters

@@ -1,6 +1,7 @@
 import opts from './opts'
 import lineData from './lineData'
 import photograph from './photograph'
+import filter from './filter'
 var arrX = [],
 	arrY = [],
 	arrN = [], //笔触点击，移动，放开总次数
@@ -15,6 +16,7 @@ var arrX = [],
 	j = 0,
 	ctx = opts.ctx;
 
+//移动
 function move(e) {
 	e.preventDefault()
 	var t = e.touches[0];
@@ -25,9 +27,8 @@ function move(e) {
 	arrColor.push(lineData.color);
 	var len = arrX.length
 	draw(len);
-
 }
-
+//点击
 function down(e) {
 	ctx.clearRect(0,0,opts.canvasW,opts.cavasH)
 	if (!opts.isDraw) {
@@ -35,7 +36,7 @@ function down(e) {
 	//重新上传图片，笔触清零
 	if (opts.isNewPic) {
 		opts.isNewPic = false;
-		//重改
+		//笔触记录清零
 		arrX.length = 0;
 		arrY.length = 0;
 		arrN.length = 0;
@@ -52,7 +53,7 @@ function down(e) {
 	arrNumber.push(arrN.length);
 	oCan.addEventListener('touchmove', move, false);
 }
-
+//放开
 function up(e) {
 	if (!opts.isDraw) {
 		return false; }
@@ -64,12 +65,11 @@ function up(e) {
 	arrWidth.push(lineData.w);
 	oCan.removeEventListener('touchmove', move, false);
 }
-
+//绘制
 function draw(len) {
 	ctx.beginPath();
 	ctx.lineCap = 'round';
 	ctx.lineJoin = 'round';
-	console.log('draw:' + len)
 	for (var i = 1; i < len; i++) {
 		//线条颜色，粗细
 		ctx.lineWidth = arrWidth[i]
@@ -91,7 +91,7 @@ function draw(len) {
 	
 	ctx.closePath();
 }
-
+//撤销
 function revoke() {
 	if(!arrNumber[arrNumber.length - 1]){
 		return false;
@@ -104,12 +104,13 @@ function revoke() {
 	arrColor.length = len;
 	arrWidth.length = len;
 	ctx.clearRect(0,0,opts.canvasW,opts.canvasH)
-	var data = photograph.data();
+	var data = opts.data
 	//重新画图像
-	ctx.drawImage(data.img , data.output.x , data.output.y , data.output.w , data.output.h)
+	ctx.drawImage(data.img , data.imgPos.x , data.imgPos.y , data.imgPos.w , data.imgPos.h)
+	filter.setFilter();
 	draw(len)
 }
-
+//重新绘制笔触
 function cleanDraw(){
 	var len = arrN.length;
 	draw(len)

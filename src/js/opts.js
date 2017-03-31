@@ -7,7 +7,7 @@ var oCan = document.getElementById('canvas'),//获取画布
   	oCreateBtn = document.getElementById('cretea'),//生成图片按钮
   	oMsg = document.querySelector('.msg'),
   	oZhezhao = document.querySelector('.zhezhao'),
-  	oRevoke = document.getElementById('revoke')//撤销按钮
+  	oRevoke = document.getElementById('revoke')//撤销按钮	 
 
 //公共方法
 function msg(type){
@@ -29,4 +29,8 @@ function msg(type){
 		msg:msg,
 		isDraw:false,//能否涂鸦
 		isNewPic:true,//是否新的图片
+		isStopPrevent:true,//是否阻止全局默认事件
+		data:{
+			
+		}
 	}

@@ -2,12 +2,12 @@ import EXIF from './exif'
 import opts from './opts'
 import fastclick from './fastclick'
 import draw from './draw'
+import filter from './filter'
 //图片上传后，change事件
 opts.oFile.addEventListener('change', change, false);
 var oCan = opts.oCan,
 	ctx = opts.ctx,
-	isCreatePic = false,
-	isChoose = false,
+	isCreatePic = false,//是否生成了图片
 	oSelect = document.getElementById('selectPicSize'),
 	oAsideBtn = document.querySelector('.asideBtn'),
 	oAside = document.querySelector('#aside')
@@ -25,16 +25,13 @@ function createImg(e) {
 	this.style.display = 'block';
 	//生成图片
 	opts.oShowImg.src = oCan.toDataURL('image/png');
-	alert('图片生成完毕,长按图片可以保存');
 	opts.oShowImg.style.display = 'block';
 	opts.oShowImg.style.position = 'static';
+	document.querySelector('.main_bottom').innerHTML = '生成成功！长按可保存图片';
 }
 
 var imgData = {
-	//输出的图片数据
-	output:{
 
-	}
 }
 
 //图片load回调方法
@@ -84,7 +81,7 @@ function getImgData(params) {
 		var canvas = document.createElement('canvas');
 		canvas.width = width = drawWidth;
 		canvas.height = height = drawHeight;
-		console.log('canvas width:' + canvas.width + 'canvas height:' + canvas.height)
+
 		var context = canvas.getContext('2d');
 		var orie = params.data.Orientation ? params.data.Orientation : false
 			//判断图片方向，重置canvas大小，确定旋转角度，iphone默认的是home键在右方的横屏拍摄方式
@@ -165,8 +162,9 @@ function change() {
 					}
 					ctx.clearRect(0, 0, cW, cH);
 					ctx.drawImage(this, (cW - w) / 2, (cH - h) / 2, w, h);
-					imgData.img = this;
-					imgData.output = {
+					opts.data.colorData = ctx.getImageData((cW - w) / 2, (cH - h) / 2, w, h)
+					opts.data.img = this;
+					opts.data.imgPos = {
 						x:(cW - w) / 2,
 						y:(cH - h) / 2,
 						w:w,
@@ -174,9 +172,15 @@ function change() {
 					}
 					opts.msg('none');
 					//选择size，笔触颜色显示
+					oAsideBtn.style.display = 'block'
 					opts.oCreateBtn.style.display = 'block';
+					document.getElementById('filterBtn').style.display = 'block';
+					//撤销按钮小时
+					opts.oRevoke.style.display = 'block';
 					isCreatePic = true;
+					//是否可以画笔触
 					opts.isDraw = true;
+					//是新的图片
 					opts.isNewPic = true;
 				})
 			}
@@ -185,12 +189,13 @@ function change() {
 	reader.readAsDataURL(file);
 }
 
+//选择图片的显示方式
 oSelect.addEventListener('change', function(e) {
 	var cW = opts.canvasW,
 		cH = opts.canvasH,
 		w = imgData.w,
 		h = imgData.h,
-		img = imgData.img,
+		img = opts.data.img,
 		set_x,set_y,set_w,set_h
 
 	ctx.clearRect(0, 0, opts.canvasW, opts.canvasH);
@@ -232,13 +237,15 @@ oSelect.addEventListener('change', function(e) {
 			break;
 	}
 	ctx.drawImage(img, set_x,set_y,set_w,set_h);
-	imgData.output = {
+	opts.data.colorData = ctx.getImageData(set_x,set_y,set_w,set_h)
+	opts.data.imgPos = {
 		x:set_x,
 		y:set_y,
 		w:set_w,
 		h:set_h
 	}
 	img = null;
+	filter.setFilter();
 	draw.cleanDraw();
 	function type(type) {
 		if (type) {
@@ -263,24 +270,38 @@ oSelect.addEventListener('change', function(e) {
 	}
 }, false);
 
+//侧边栏显示
 oAsideBtn.addEventListener('touchstart', function(e) {
 	if (!isCreatePic) {
 		alert('请先选择图片')
 		return false;
 	}
 	opts.isDraw = false;
-	oAside.className = 'aside_show'
+	oAside.className = 'aside_show';
 })
+//侧边栏隐藏
 document.querySelector('.aside_hideBtn').addEventListener('touchstart', function(e) {
 	opts.isDraw = true;
 	oAside.className = 'aside_hide';
 	document.querySelector('.colorPickerbox').style.transform = 'translateX(-1000px)';
 })
 
-function getData(){
-	return imgData
+
+/*function getData(){
+	return {
+		img:imgData.img,
+		colorData:imgData.colorData,
+		output:{
+			x:imgData.output.x,
+			y:imgData.output.y,
+			w:imgData.output.w,
+			h:imgData.output.h,
+		}
+	}
 }
 
 export default {
+	//输出图片当前的宽高，xy，Url
 	data:getData
 }
+*/

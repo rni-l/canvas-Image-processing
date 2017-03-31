@@ -19,10 +19,17 @@ document.addEventListener('DOMContentLoaded', function(e) {
 	colorPicker.init()
 
 	oColorBtn.addEventListener('touchstart',function(e){
-		console.log(colorOnoff)
+		e.stopPropagation();
+		if(colorOnoff){
+			document.addEventListener('touchstart',colorPickerHide,false);
+		}
 		oColorBox.style.transform = 'translateX(' + (colorOnoff ? 0 : -1000) +'px)';
 		colorOnoff = !colorOnoff;
 	},false);
+	function colorPickerHide(){
+		oColorBox.style.transform = 'translateX(' +  -1000 +'px)';
+		document.removeEventListener('touchstart',colorPickerHide,false);
+	}
 
 	//模拟range
 	var oP = document.querySelector('.rangeWrap p')
@@ -46,6 +53,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
 		var t = e.touches[0]
 		r_opts.fx = t.clientX
 		r_opts.fy = t.clientY
+		//添加移动事件
 		this.addEventListener('touchmove', rangeMove, false);
 	},false);
 
@@ -67,6 +75,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
 	}
 
 	oRange.addEventListener('touchend',function(e){
+		//移除移动事件
 		this.removeEventListener('touchmove', rangeMove, false);
 	},false)
 
