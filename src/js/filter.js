@@ -14,11 +14,11 @@ typeName = '', //类型名字
 
 //点击filterBtn
 document.getElementById('filterBtn').addEventListener('touchstart', function(e) {
-	oFilterBox.className = 'filter_show'
+	oFilterBox.style.display = 'block';
 }, false);
 
 document.querySelector('#filterBox .close').addEventListener('touchstart', function(e) {
-	oFilterBox.className = 'filter_hide'
+	oFilterBox.style.display = 'none';
 }, false);
 
 
@@ -56,7 +56,8 @@ oFilterSelect.addEventListener('change', function(e) {
 	//格式化内容
 	var str = format(arr, arr2);
 	oContent.innerHTML = str
-	dataList = [...document.querySelectorAll('#filterBox .content input')].filter(function(v, i) {
+	var aInput = Array.prototype.slice.call(document.querySelectorAll('#filterBox .content input'))
+	dataList = aInput.filter(function(v, i) {
 		return v.nodeName === 'INPUT'
 	})
 	updateFilter();
@@ -87,11 +88,14 @@ function format(arr, arr2) {
 
 function setFilter(type = typeName,imgColorData = opts.data.colorData) {
 	if(!type){return false;}
+
 	var ctx = opts.ctx
 	var filtered = ImageFilters[type](imgColorData, ...filterData.filter),
 		pos = opts.data.imgPos
 	ctx.clearRect(pos.x,pos.y,pos.w,pos.h)
 	ctx.putImageData(filtered, pos.x,pos.y);
+	filtered = null;
+	pos = null;
 }
 
 

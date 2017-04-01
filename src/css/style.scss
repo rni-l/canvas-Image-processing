@@ -85,7 +85,7 @@ body{-webkit-touch-callout: none; -webkit-text-size-adjust: none; -webkit-user-s
 	//侧边栏
 	#aside{
 		width:75px;height: 100%;top: 0;background:#F37676;height: 100%;position: absolute;
-	opacity: 0;right: 0;@include transform(translateX(200px));
+	right: 0;display: none;
 	}
 
 	//按钮
@@ -95,27 +95,6 @@ body{-webkit-touch-callout: none; -webkit-text-size-adjust: none; -webkit-user-s
 		.aside_wrap{
 			height: 100%;width: 100%;
 		}
-		// show
-		@-webkit-keyframes aside{
-			from{@include transform(translateX(200px));opacity: 0;}
-			to{@include transform(translateX(0));opacity: 1;}
-		}
-		@keyframes aside{
-			from{@include transform(translateX(200px));opacity: 0;}
-			to{@include transform(translateX(0));opacity: 1;}
-		}
-		// hide
-		@-webkit-keyframes aside2{
-			from{@include transform(translateX(0));opacity: 1;}
-			to{@include transform(translateX(200px));opacity: 0;}
-		}
-		@keyframes aside2{
-			from{@include transform(translateX(0));opacity: 1;}
-			to{@include transform(translateX(200px));opacity: 0;}
-		}
-		.aside_show{@include animation(aside .1s);@include animationFillMode(forwards);}
-		.aside_hide{@include animation(aside2 .75s);@include animationFillMode(forwards);}
-
 	//range
 	.rangeWrap{
 
@@ -135,8 +114,8 @@ body{-webkit-touch-callout: none; -webkit-text-size-adjust: none; -webkit-user-s
 	}
 	#filterBox{
 		bottom: 0;left: 0;width: 100%;min-height:120px;background:#DFA3A3;position: absolute;
-		@include transform(translateY(200px));opacity: 0;
-		@include flex; @include f_dire_c; @include f_jc_sa;
+		display: none;/* @include transform(translateY(200px));opacity: 0; */
+		 @include f_dire_c; @include f_jc_sa;
 		.title{
 			padding:15px 0;
 			span{
@@ -161,24 +140,4 @@ body{-webkit-touch-callout: none; -webkit-text-size-adjust: none; -webkit-user-s
 		#filterSelect{
 			border:0;font-size:12px;width:120px;height:30px;font-weight: bold;
 		}
-
-	@-webkit-keyframes filter_show{
-		from{@include transform(translateY(200px));opacity:0}
-		to{@include transform(translateY(0));opacity:1}
-	}
-	@-webkit-keyframes filter_hide{
-		from{@include transform(translateY(0));opacity:1}
-		to{@include transform(translateY(200px));opacity:0}
-	}
-	@keyframes filter_show{
-		from{@include transform(translateY(200px));opacity:0}
-		to{@include transform(translateY(0));opacity:1}
-	}
-	@keyframes filter_hide{
-		from{@include transform(translateY(0));opacity:1}
-		to{@include transform(translateY(200px));opacity:0}
-	}
-	.filter_show{@include animation(filter_show .1s);@include animationFillMode(forwards);}
-	.filter_hide{@include animation(filter_hide 1s);@include animationFillMode(forwards);}
-
 

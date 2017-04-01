@@ -32,5 +32,9 @@ function msg(type){
 		isStopPrevent:true,//是否阻止全局默认事件
 		data:{
 			
-		}
+		},
+		transform: function(obj, data) {
+      obj.style.WebkitTransform = data;
+      obj.style.transform = data;
+    }
 	}

@@ -277,31 +277,11 @@ oAsideBtn.addEventListener('touchstart', function(e) {
 		return false;
 	}
 	opts.isDraw = false;
-	oAside.className = 'aside_show';
+	oAside.style.display = 'block';
 })
 //侧边栏隐藏
 document.querySelector('.aside_hideBtn').addEventListener('touchstart', function(e) {
 	opts.isDraw = true;
-	oAside.className = 'aside_hide';
-	document.querySelector('.colorPickerbox').style.transform = 'translateX(-1000px)';
+	oAside.style.display = 'none';
+	opts.transform(document.querySelector('.colorPickerbox') , 'translateX(-1000px)')
 })
-
-
-/*function getData(){
-	return {
-		img:imgData.img,
-		colorData:imgData.colorData,
-		output:{
-			x:imgData.output.x,
-			y:imgData.output.y,
-			w:imgData.output.w,
-			h:imgData.output.h,
-		}
-	}
-}
-
-export default {
-	//输出图片当前的宽高，xy，Url
-	data:getData
-}
-*/

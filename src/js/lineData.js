@@ -1,4 +1,5 @@
 import ColorPicker from './ColorPicker'
+import opts from './opts'
 var output = {color:'#000000',w:5}
 
 document.addEventListener('DOMContentLoaded', function(e) {
@@ -23,11 +24,11 @@ document.addEventListener('DOMContentLoaded', function(e) {
 		if(colorOnoff){
 			document.addEventListener('touchstart',colorPickerHide,false);
 		}
-		oColorBox.style.transform = 'translateX(' + (colorOnoff ? 0 : -1000) +'px)';
+		opts.transform(oColorBox,'translateX(' + (colorOnoff ? 0 : -1000) +'px)')
 		colorOnoff = !colorOnoff;
 	},false);
 	function colorPickerHide(){
-		oColorBox.style.transform = 'translateX(' +  -1000 +'px)';
+		opts.transform(oColorBox, 'translateX(' +  -1000 +'px)')
 		document.removeEventListener('touchstart',colorPickerHide,false);
 	}
 
@@ -44,15 +45,21 @@ document.addEventListener('DOMContentLoaded', function(e) {
 			size : 1,
 			num : 0
 		}
-	//修正高度
-	r_opts.h = r_opts.h - r_opts.rH
-	//份数
-	r_opts.num = r_opts.h/r_opts.max
+	
+	
 	oRange.addEventListener('touchstart',function(e){
 		e.stopPropagation();
 		var t = e.touches[0]
 		r_opts.fx = t.clientX
 		r_opts.fy = t.clientY
+
+		r_opts.h = oRangePar.offsetHeight
+		r_opts.t = oRangePar.offsetTop
+		r_opts.rH = oRange.offsetHeight
+		//修正高度
+		r_opts.h = r_opts.h - r_opts.rH
+		//份数
+		r_opts.num = r_opts.h/r_opts.max
 		//添加移动事件
 		this.addEventListener('touchmove', rangeMove, false);
 	},false);
@@ -65,8 +72,8 @@ document.addEventListener('DOMContentLoaded', function(e) {
 		}else if(my >= r_opts.h){
 			my = r_opts.h;
 		}
-		oRange.style.WebkitTransform = 'translateY(' + my + 'px)'
-		oRange.style.transform = 'translateY(' + my + 'px)'
+
+		opts.transform(oRange,('translateY(' + my + 'px)'))
 		r_opts.my = my;
 		//判断当前位置，属于几
 		var value = Math.floor(my/r_opts.num);
