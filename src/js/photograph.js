@@ -315,4 +315,10 @@ function selectPicSize(value){
 			set_h = h
 			break;
 	}
+	return{
+		set_x:set_x,
+		set_y:set_y,
+		set_w:set_w,
+		set_h:set_h
+	}
 }
