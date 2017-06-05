@@ -1,7 +1,7 @@
 import opts from './opts'
 import draw from './draw'
 import photograph from './photograph'
-import ImageFilters from './imagefilters'
+import ImageFilters from './../plugins/imagefilters'
 //缓存滤镜信息数据
 var filterData = {
 	filter:[]

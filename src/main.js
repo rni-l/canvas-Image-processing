@@ -4,7 +4,7 @@ import opts from 'opts'
 import photo from './js/photograph'
 import draw from './js/draw'
 import lineData from './js/lineData'
-import Fastclick from './js/fastclick'
+import Fastclick from './plugins/fastclick'
 import filter from './js/filter'
 //添加fastclick
 document.addEventListener('DOMContentLoaded', function() {

@@ -8,7 +8,7 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 module.exports = {
 	entry: {
 		app: path.resolve(APP_PATH, 'main.js'),
-		vendors: ['./src/js/fastclick.js', './src/js/exif.js']
+		vendors: ['./src/plugins//fastclick.js', './src/plugins/exif.js', './src/plugins/imagefilters.js']
 	},
 	output: {
 		path: BUILD_PATH,

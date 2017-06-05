@@ -1,4 +1,4 @@
-import ColorPicker from './ColorPicker'
+import ColorPicker from './../plugins/ColorPicker'
 import opts from './opts'
 var output = {color:'#000000',w:5}
 //画布的线的，数据（）

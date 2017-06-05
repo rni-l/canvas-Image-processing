@@ -1,6 +1,5 @@
-import EXIF from './exif'
+import EXIF from './../plugins/exif'
 import opts from './opts'
-import fastclick from './fastclick'
 import draw from './draw'
 import filter from './filter'
 //图片上传后，change事件
