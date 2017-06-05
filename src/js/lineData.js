@@ -1,11 +1,13 @@
 import ColorPicker from './ColorPicker'
 import opts from './opts'
 var output = {color:'#000000',w:5}
-
+//画布的线的，数据（）
 document.addEventListener('DOMContentLoaded', function(e) {
 	var oColorBtn = document.querySelector('.colorBtn'),
 		oColorBox = document.querySelector('.colorPickerbox'),
-		colorOnoff = true
+		colorOnoff = true;
+
+	//颜色选择器
 	var colorPicker = new ColorPicker({
       oBox: oColorBox,
       oBtnWrap: document.querySelector('.btnWrap'),
@@ -17,20 +19,14 @@ document.addEventListener('DOMContentLoaded', function(e) {
       	oColorBtn.style.background = color;
       }
     })
+
 	colorPicker.init()
 
 	oColorBtn.addEventListener('touchstart',function(e){
-		e.stopPropagation();
-		if(colorOnoff){
-			document.addEventListener('touchstart',colorPickerHide,false);
-		}
-		opts.transform(oColorBox,'translateX(' + (colorOnoff ? 0 : -1000) +'px)')
+		opts.transform(oColorBox,'translateX(' + (colorOnoff ? 0 : -1000) +'px)');
 		colorOnoff = !colorOnoff;
 	},false);
-	function colorPickerHide(){
-		opts.transform(oColorBox, 'translateX(' +  -1000 +'px)')
-		document.removeEventListener('touchstart',colorPickerHide,false);
-	}
+
 
 	//模拟range
 	var oP = document.querySelector('.rangeWrap p')

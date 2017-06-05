@@ -1,4 +1,4 @@
-
+//将对象存储在内存中
 var oCan = document.getElementById('canvas'),//获取画布
     ctx = oCan.getContext('2d'),
     oFile = document.getElementById('file'),//上传图片按钮

@@ -1,7 +1,6 @@
 CACHE MANIFEST
 #v01
 index.html
-dist/wheel.png
 dist/bundle.js
 dist/vendors.js
 
