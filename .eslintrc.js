@@ -62,6 +62,7 @@ module.exports = {
     "no-restricted-syntax": 0, //关闭 禁用js特殊语法（with, in)
     "init-declarations": "off",
     "object-shorthand": "off",
-    "no-new": 0
+    "no-new": 0,
+    "no-unresolved": 0
   }
 }
