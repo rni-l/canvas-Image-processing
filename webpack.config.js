@@ -63,7 +63,8 @@ module.exports = {
     extensions: ['.js', '.scss'],
     //模块别名定义，方便后续直接引用别名，无须多写长长的地址
     alias: {
-      'opts': './../src/js/opts.js'
+      'opts': './../src/js/opts.js',
+      '@': path.join(__dirname, '..', 'src')
     }
   },
 

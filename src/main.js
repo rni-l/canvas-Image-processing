@@ -1,27 +1,27 @@
 // 入口文件
-import './css/style'
-import opts from 'opts'
-import photo from './js/photograph'
-import draw from './js/draw'
-import lineData from './js/lineData'
+import './css/style.scss'
 import Fastclick from './plugins/fastclick'
-import filter from './js/filter'
+import _opts from './js/opts'
+import './js/photograph'
+import './js/draw'
+import './js/lineData'
+import './js/filter'
 
 // 添加fastclick
-document.addEventListener('DOMContentLoaded', function() {
-    Fastclick.attach(document.body)
+document.addEventListener('DOMContentLoaded', () => {
+  Fastclick.attach(document.body)
 }, false)
 
-document.querySelector('.main').addEventListener('touchmove', function(e) {
-  if (opts.isStopPrevent) {
+document.querySelector('.main').addEventListener('touchmove', (e) => {
+  if (_opts.isStopPrevent) {
     e.preventDefault()
   }
 }, false)
 
-opts.canvasW = opts.oTop.offsetWidth
-opts.canvasH = opts.oTop.offsetHeight
+_opts.canvasW = _opts.oTop.offsetWidth
+_opts.canvasH = _opts.oTop.offsetHeight
 
 // 初始化，定义画布宽高
-const oCan = opts.oCan
-oCan.width = opts.canvasW
-oCan.height = opts.canvasH
+const oCan = _opts.oCan
+oCan.width = _opts.canvasW
+oCan.height = _opts.canvasH
