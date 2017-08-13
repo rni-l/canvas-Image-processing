@@ -73,12 +73,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // 份数
     r_opts.num = r_opts.h / r_opts.max
     // 添加移动事件
-    this.addEventListener('touchmove', rangeMove, false)
+    oRange.addEventListener('touchmove', rangeMove, false)
   }, false)
 
   oRange.addEventListener('touchend', () => {
     // 移除移动事件
-    this.removeEventListener('touchmove', rangeMove, false)
+    oRange.removeEventListener('touchmove', rangeMove, false)
   }, false)
 }, false)
 

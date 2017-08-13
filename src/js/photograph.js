@@ -8,6 +8,8 @@ const oCan = opts.oCan,
   oSelect = document.getElementById('selectPicSize'),
   oAsideBtn = document.querySelector('.asideBtn'),
   oAside = document.querySelector('#aside'),
+  oFile = document.getElementById('file'), // 上传图片按钮
+  oCreateBtn = document.getElementById('create'), // 生成图片按钮
   imgData = {}
 
 let isCreatePic = false // 是否生成了图片
@@ -100,7 +102,7 @@ function createImg(e) {
     return false
   }
   // 删除上传图片按钮
-  opts.oFile.parentNode.removeChild(opts.oFile)
+  oFile.parentNode.removeChild(oFile)
   this.parentNode.removeChild(this)
   oCan.style.display = 'none'
   this.style.display = 'block'
@@ -108,7 +110,7 @@ function createImg(e) {
   opts.oShowImg.src = oCan.toDataURL('image/png')
   opts.oShowImg.style.display = 'block'
   opts.oShowImg.style.position = 'static'
-  document.querySelector('.main_bottom').innerHTML = '生成成功！长按可保存图片'
+  document.querySelector('.main_bottom').innerHTML = '<p class="success_txt">生成图片成功！长按可保存图片</p>'
 }
 
 // 图片load回调方法
@@ -241,7 +243,7 @@ function uploadFileCallBack() {
   opts.msg('none')
   // 选择size，笔触颜色显示
   oAsideBtn.style.display = 'block'
-  opts.oCreateBtn.style.display = 'block'
+  oCreateBtn.style.display = 'block'
   document.getElementById('filterBtn').style.display = 'block'
   // 撤销按钮小时
   opts.oRevoke.style.display = 'block'
@@ -285,10 +287,10 @@ function uploadFile() {
 }
 
 // 图片上传后，change事件
-opts.oFile.addEventListener('change', uploadFile, false)
+oFile.addEventListener('change', uploadFile, false)
 
 // 生成图片
-opts.oCreateBtn.addEventListener('touchstart', createImg, false)
+oCreateBtn.addEventListener('touchstart', createImg, false)
 
 // 侧边栏显示
 oAsideBtn.addEventListener('touchstart', () => {
