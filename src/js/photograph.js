@@ -1,7 +1,7 @@
 import EXIF from './../plugins/exif'
 import opts from './opts'
-import draw from './draw'
-import filter from './filter'
+import cleanDraw from './draw'
+import setFilter from './filter'
 
 const oCan = opts.oCan,
   ctx = opts.ctx,
@@ -232,7 +232,7 @@ function uploadFileCallBack() {
   }
   ctx.clearRect(0, 0, cW, cH)
   ctx.drawImage(this, (cW - w) / 2, (cH - h) / 2, w, h)
-  opts.data.colorData = ctx.getImageData((cW - w) / 2, (cH - h) / 2, w, h)
+  opts.data.imageData = ctx.getImageData((cW - w) / 2, (cH - h) / 2, w, h)
   opts.data.img = this
   opts.data.imgPos = {
     x: (cW - w) / 2,
@@ -240,7 +240,7 @@ function uploadFileCallBack() {
     w: w,
     h: h
   }
-  opts.msg('none')
+  opts.showLoading('none')
   // 选择size，笔触颜色显示
   oAsideBtn.style.display = 'block'
   oCreateBtn.style.display = 'block'
@@ -265,7 +265,7 @@ function uploadFile() {
     return false
   }
   // 图片处理中，提示层出现
-  opts.msg('block')
+  opts.showLoading('block')
 
   // EXIF js 可以读取图片的元信息 https:// github.com/exif-js/exif-js
   EXIF.getData(file, function() {
@@ -310,9 +310,10 @@ document.querySelector('.aside_hideBtn').addEventListener('touchstart', () => {
 
 // 选择图片的显示方式
 oSelect.addEventListener('change', () => {
+  // 获取上传的图片
   let img = opts.data.img
-  const output = selectPicSize(this.value)
   // 获取修正后的宽高,xy
+  const output = selectPicSize(this.value)
   const set_x = output.set_x,
     set_y = output.set_y,
     set_w = output.set_w,
@@ -320,7 +321,7 @@ oSelect.addEventListener('change', () => {
   // 重绘
   ctx.clearRect(0, 0, opts.canvasW, opts.canvasH)
   ctx.drawImage(img, set_x, set_y, set_w, set_h)
-  opts.data.colorData = ctx.getImageData(set_x, set_y, set_w, set_h)
+  opts.data.imageData = ctx.getImageData(set_x, set_y, set_w, set_h)
   opts.data.imgPos = {
     x: set_x,
     y: set_y,
@@ -328,6 +329,6 @@ oSelect.addEventListener('change', () => {
     h: set_h
   }
   img = null
-  filter.setFilter()
-  draw.cleanDraw()
+  setFilter()
+  cleanDraw()
 }, false)

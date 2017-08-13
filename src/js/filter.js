@@ -1,5 +1,5 @@
 import opts from './opts'
-import draw from './draw'
+import updateDrawStrokes from './draw'
 import ImageFilters from './../plugins/imagefilters'
 
 // 缓存滤镜信息数据
@@ -9,17 +9,26 @@ const filterData = {
 const oFilterBox = document.getElementById('filterBox'), // 滤镜盒子
   oFilterSelect = document.getElementById('filterSelect'), // 选择滤镜select
   oContent = document.querySelector('#filterBox .content')
-let typeName = '', // 类型名字
-  dataList = '' // 子节点
+let typeName = '', // 当前滤镜效果的名字
+  dataList = [] // 当前滤镜效果，子选项值
 
-// 设置滤镜
-function setFilter(type = typeName, imgColorData = opts.data.colorData) {
+/*
+  滤镜流程：
+
+*/
+
+/*
+ *设置滤镜
+ *参数
+ *type: 滤镜类型名字
+*/
+function setFilter(type = typeName, imgData = opts.data.imageData) {
   if (!type) {
     return false
   }
   const ctx = opts.ctx
   // 使用滤镜
-  let filtered = ImageFilters[type](imgColorData, ...filterData.filter),
+  let filtered = ImageFilters[type](imgData, ...filterData.filter),
     pos = opts.data.imgPos
   ctx.clearRect(pos.x, pos.y, pos.w, pos.h)
   ctx.putImageData(filtered, pos.x, pos.y)
@@ -29,12 +38,15 @@ function setFilter(type = typeName, imgColorData = opts.data.colorData) {
 
 // 更新滤镜
 function updateFilter() {
+  // 清空
   filterData.filter.length = 0
   dataList.forEach((v) => {
     filterData.filter.push(v.value)
   })
+  // 设置
   setFilter(typeName)
-  draw.cleanDraw()
+  // 绘制笔触
+  updateDrawStrokes()
 }
 
 // 将数组格式化成html
@@ -50,21 +62,12 @@ function format(arr, arr2) {
   return str
 }
 
-// 滤镜框显示隐藏
-document.getElementById('filterBtn').addEventListener('touchstart', () => {
-  oFilterBox.style.display = 'block'
-}, false)
-
-document.querySelector('#filterBox .close').addEventListener('touchstart', () => {
-  oFilterBox.style.display = 'none'
-}, false)
-
-
 // box change事件
 oFilterBox.addEventListener('change', (e) => {
   const tar = e.target
   // 事件委托，获取到当前对象
   if (tar.getAttribute('type') === 'range') {
+    // 当range值更改后，渲染滤镜
     updateFilter()
   }
 }, false)
@@ -74,6 +77,7 @@ oFilterBox.addEventListener('input', (e) => {
   const tar = e.target
   // 事件委托，获取到当前对象
   if (tar.getAttribute('type') === 'range') {
+    // 拖动滚动条时，显示当前的value值
     tar.nextSibling.innerHTML = tar.value
   }
 })
@@ -83,7 +87,7 @@ oFilterBox.addEventListener('touchstart', () => {
 }, false)
 
 // 选择滤镜后
-oFilterSelect.addEventListener('change', () => {
+oFilterSelect.addEventListener('change', function() {
   opts.isStopPrevent = true
   // 拆解input属性值成数组
   const arr = this.value.split('&'),
@@ -101,6 +105,5 @@ oFilterSelect.addEventListener('change', () => {
   updateFilter()
 }, false)
 
-export default {
-  setFilter: setFilter
-}
+// 渲染当前选择好的滤镜效果
+export default setFilter
