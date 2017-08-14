@@ -26,6 +26,7 @@ export default {
   isNewPic: true, // 是否新的图片
   isStopPrevent: true, // 是否阻止全局默认事件
   data: {},
+  imgData: {},
   // 兼容写法
   transform: (obj, data) => {
     obj.style.WebkitTransform = data

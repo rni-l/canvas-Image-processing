@@ -6,6 +6,7 @@ import './js/photograph'
 import './js/draw'
 import './js/lineData'
 import './js/filter'
+import './js/selectImgSize'
 
 // 添加fastclick
 document.addEventListener('DOMContentLoaded', () => {

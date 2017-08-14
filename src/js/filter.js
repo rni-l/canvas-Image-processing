@@ -16,7 +16,7 @@ let typeName = '', // 当前滤镜效果的名字
 /*
   滤镜流程：
   1. 选择好滤镜效果和滤镜的值
-  2. 获取图片数据渲染好滤镜效果的数据
+  2. 获取渲染滤镜效果的数据
   3. 再渲染到主屏
   4. 绘制笔触效果
 */
@@ -111,7 +111,7 @@ oFilterSelect.addEventListener('change', function() {
   // 格式化内容，生成range组件
   oContent.innerHTML = format(arr[0])
   // 获取input对象数组
-  const aInput = Array.prototype.slice.call(document.querySelectorAll('#filterBox .content input'))
+  const aInput = [...document.querySelectorAll('#filterBox .content input')]
   // 缓存input对象
   dataList = aInput.filter((v) => {
     return v.nodeName === 'INPUT'
