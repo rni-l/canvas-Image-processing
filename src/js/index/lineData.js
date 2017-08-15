@@ -1,5 +1,5 @@
 import opts from './opts'
-import ColorPicker from './../plugins/colorPicker'
+import ColorPicker from './../../plugins/colorPicker'
 
 const output = { color: '#000000', w: 5 }
 // 画布的线的，数据（）

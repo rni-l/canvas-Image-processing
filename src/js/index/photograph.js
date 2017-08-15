@@ -1,4 +1,4 @@
-import EXIF from './../plugins/exif'
+import EXIF from './../../plugins/exif'
 import opts from './opts'
 
 const oCan = opts.oCan,
