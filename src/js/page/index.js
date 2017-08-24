@@ -1,12 +1,12 @@
 // 入口文件
-import './css/style.scss'
-import Fastclick from './plugins/fastclick'
-import _opts from './js/opts'
-import './js/photograph'
-import './js/draw'
-import './js/lineData'
-import './js/filter'
-import './js/selectImgSize'
+import './../../css/index.scss'
+import Fastclick from './../../plugins/fastclick'
+import _opts from './../index/opts'
+import './../index/photograph'
+import './../index/draw'
+import './../index/lineData'
+import './../index/filter'
+import './../index/selectImgSize'
 
 // 添加fastclick
 document.addEventListener('DOMContentLoaded', () => {

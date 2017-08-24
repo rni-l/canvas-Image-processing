@@ -1,5 +1,5 @@
 import opts from './opts'
-import ColorPicker from './../plugins/colorPicker'
+import ColorPicker from './../../plugins/colorPicker'
 
 const output = { color: '#000000', w: 5 }
 // 画布的线的，数据（）
@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
     colorOnoff = !colorOnoff
   }, false)
 
-  oRange.addEventListener('touchstart', function(e) {
+  oRange.addEventListener('touchstart', (e) => {
     e.stopPropagation()
     const t = e.touches[0]
     r_opts.fx = t.clientX
@@ -73,12 +73,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // 份数
     r_opts.num = r_opts.h / r_opts.max
     // 添加移动事件
-    this.addEventListener('touchmove', rangeMove, false)
+    oRange.addEventListener('touchmove', rangeMove, false)
   }, false)
 
-  oRange.addEventListener('touchend', function() {
+  oRange.addEventListener('touchend', () => {
     // 移除移动事件
-    this.removeEventListener('touchmove', rangeMove, false)
+    oRange.removeEventListener('touchmove', rangeMove, false)
   }, false)
 }, false)
 

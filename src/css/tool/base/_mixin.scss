@@ -1,5 +1,18 @@
 //all style public mixin
 
+// 颜色，配置
+$bc: #4E9CCB; // 基色
+$bcBg: #91BBD4; // 背景色
+$bc3: #3A7598;
+$bcTxt: #1B3646; // 文字颜色
+$bcBottomBg: #34434C; // 底部背景色
+$txtColor: #a7a7a7;
+$btnTxtColor: #757575;
+
+@function to($value) {
+	@return $value / 75 * 1rem;
+}
+
 /* css background-linear-gradient */
 	@mixin l_g($dir, $f, $l) {
 	    background: -webkit-linear-gradient($dir, $f, $l);
