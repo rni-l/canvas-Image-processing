@@ -1,13 +1,10 @@
 // 入口文件
-import './css/style.scss'
 import Fastclick from './plugins/fastclick'
 import _opts from './js/opts'
 import './js/photograph'
 import './js/draw'
 import './js/lineData'
 import './js/filter'
-import './js/selectImgSize'
-
 // 添加fastclick
 document.addEventListener('DOMContentLoaded', () => {
   Fastclick.attach(document.body)
@@ -19,21 +16,8 @@ document.querySelector('.main').addEventListener('touchmove', (e) => {
   }
 }, false)
 
-const oFilterBox = document.getElementById('filterBox')
-
-// 滤镜框显示隐藏
-document.getElementById('filterBtn').addEventListener('touchstart', () => {
-  oFilterBox.style.display = 'block'
-}, false)
-
-document.querySelector('#filterBox .close').addEventListener('touchstart', () => {
-  oFilterBox.style.display = 'none'
-}, false)
-
-const oTop = document.querySelector('.main_top')
-
-_opts.canvasW = oTop.offsetWidth
-_opts.canvasH = oTop.offsetHeight
+_opts.canvasW = _opts.oTop.offsetWidth
+_opts.canvasH = _opts.oTop.offsetHeight
 
 // 初始化，定义画布宽高
 const oCan = _opts.oCan
