@@ -1,0 +1,11 @@
+CACHE MANIFEST
+#v01
+index.html
+dist/bundle.js
+dist/vendors.js
+
+NETWORK:
+*
+
+FALLBACK:
+404.html
