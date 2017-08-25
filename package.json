@@ -1,12 +1,12 @@
 {
   "name": "canvas",
-  "version": "1.0.0",
-  "description": "",
-  "author": "",
+  "version": "1.1.0",
+  "description": "canvas image processing",
+  "author": "Rni-L",
   "main": "app.js",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --open --inline --hot --port 3000",
-    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
+    "start": "cross-env NODE_ENV=development node app.js",
+    "watch": "gulp watch"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
@@ -19,6 +19,7 @@
     "browser-sync": "^2.18.13",
     "browserify": "^14.4.0",
     "cookie-parser": "^1.4.3",
+    "cross-env": "^5.0.5",
     "eslint": "^3.11.1",
     "eslint-config-airbnb-base": "^10.0.1",
     "eslint-plugin-import": "^1.16.0",

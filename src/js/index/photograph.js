@@ -95,6 +95,8 @@ function computeWidthAndHeight(data) {
   const canvas = document.createElement('canvas')
   const width = drawWidth,
     height = drawHeight
+  canvas.width = width
+  canvas.height = height
 
   const context = canvas.getContext('2d')
   // 判断图片方向，重置canvas大小，确定旋转角度，iphone默认的是home键在右方的横屏拍摄方式
@@ -147,6 +149,7 @@ function getImgData(params) {
       drawHeight: params.data.PixelYDimension || this.naturalHeight,
       params: params
     })
+    console.log(output)
     // 使用canvas旋转校正
     output.context.rotate(output.degree * Math.PI / 180)
     // 渲染新的图片
