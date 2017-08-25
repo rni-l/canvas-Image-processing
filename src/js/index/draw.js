@@ -1,10 +1,10 @@
 import opts from './opts'
 import lineData from './lineData'
-import filter from './filter'
+import setFilter from './filter'
 
 // 画布功能
-const arrX = [],
-  arrY = [],
+const arrX = [], // 坐标x
+  arrY = [], // 坐标y
   arrN = [], // 笔触点击，移动，放开总次数
   arrColor = [], // 线条颜色
   arrWidth = [], // 线条粗细
@@ -122,9 +122,10 @@ function revoke() {
   if (!arrNumber[arrNumber.length - 1]) {
     return false
   }
-  // 长度减一
+  // 获取最后一次笔触的次数
   const len = arrNumber[arrNumber.length - 1]
   arrNumber.pop()
+  // 清除对应数量的操作
   arrX.length = len
   arrY.length = len
   arrN.length = len
@@ -132,9 +133,12 @@ function revoke() {
   arrWidth.length = len
   ctx.clearRect(0, 0, opts.canvasW, opts.canvasH)
   const data = opts.data
-  // 重绘
+  /*
+    重绘流程：
+    重新绘制图片 => 渲染滤镜 => 渲染笔触
+  */
   ctx.drawImage(data.img, data.imgPos.x, data.imgPos.y, data.imgPos.w, data.imgPos.h)
-  filter.setFilter()
+  setFilter()
   draw(len)
 }
 
@@ -144,6 +148,5 @@ opts.oRevoke.addEventListener('touchstart', revoke)
 oCan.addEventListener('touchstart', down, false)
 oCan.addEventListener('touchend', up, false)
 
-export default {
-  cleanDraw: cleanDraw
-}
+// 清除笔画功能
+export default cleanDraw

@@ -1,0 +1,28 @@
+{
+  "extends": "eslint:recommended",
+  "env": {
+    "browser": true,
+    "node": true,
+    "es6": true,
+    "amd": true
+  },
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaVersion": 6,
+  },
+  "rules": {
+    "no-console": "off", // 关闭：禁用 console
+    "no-alert": "off", // 关闭：禁用 alert
+    "semi": ["error", "never"], // 不使用分号结尾
+    "func-names": "off", // 关闭：要求或禁止使用命名的 function 表达式
+    "vars-on-top": "off", // 关闭：要求所有的 var 声明出现在它们所在的作用域顶部
+    "indent": ["error", 2], // 统一两个空格缩进
+    "wrap-iife": "off", // 关闭：要求 IIFE 使用括号括起来
+    "max-len": ["error", 160], // 强制一行的最大长度 160
+    "camelcase": "off", // 关闭：强制使用骆驼拼写法命名约定
+    "space-before-function-paren": ["error", "never"], // 禁止函数圆括号之前有一个空格
+    "no-undef": 0,
+    "one-var": 0,
+    "linebreak-style": 0 // 解决windows出现CRLF错误
+  }
+}
