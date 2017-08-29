@@ -10,11 +10,11 @@ var config = require('./config')
 
 var app = express()
 
-// view engine setup
+// 设置模板引擎
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'pug')
 
-// app.use(favicon(path.join(__dirname, 'public', 'favicon.png')))
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cookieParser())
@@ -56,7 +56,7 @@ app.use(log4js.connectLogger(log4js.getLogger('http')))
 app.use(require('./routes/index'))
 app.use(require('./routes/api'))
 
-// catch 404 and forward to error handler
+// 如果执行到这步，说明没有匹配到路由，404
 app.use(function(req, res, next) {
   res.status(404).render('404')
 })
