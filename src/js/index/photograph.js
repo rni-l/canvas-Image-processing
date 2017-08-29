@@ -36,6 +36,7 @@ function createImg(e) {
 
 // 图片load回调方法
 function cacheImg(url, callback) {
+  console.log('load')
   if (!url) {
     callback.call()
     return false
@@ -149,7 +150,6 @@ function getImgData(params) {
       drawHeight: params.data.PixelYDimension || this.naturalHeight,
       params: params
     })
-    console.log(output)
     // 使用canvas旋转校正
     output.context.rotate(output.degree * Math.PI / 180)
     // 渲染新的图片

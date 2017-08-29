@@ -36,6 +36,7 @@
     "gulp-sourcemaps": "^2.6.1",
     "gulp-uglify": "^3.0.0",
     "log4js": "^1.1.0",
+    "lowdb": "^0.17.2",
     "node-sass": "^4.5.3",
     "pug": "^2.0.0-rc.3",
     "serve-favicon": "^2.4.3",

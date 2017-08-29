@@ -7,13 +7,36 @@ const uglify = require('gulp-uglify')
 const imagemin = require('gulp-imagemin')
 const sourcemaps = require('gulp-sourcemaps')
 const plumber = require('gulp-plumber')
-const browserSync = require('browser-sync').create()
 const babel = require('gulp-babel')
 const notify = require('gulp-notify')
 const babelify = require('babelify')
+
+// browserify
 const browserify = require("browserify")
 const source = require('vinyl-source-stream')
 const buffer = require('vinyl-buffer')
+
+// 配置文件
+const Config = require('./config.js')
+
+// 自动刷新
+const browserSync = require('browser-sync').create()
+// 配置代理
+gulp.task('server', function() {
+  browserSync.init({
+    proxy: 'localhost:' + Config.port,
+    browser: "chrome",
+    logLevel: "debug",
+    files: [
+      "./public/*.html",
+      "./src/css/**/*.scss",
+      "./src/js/**/*.js"
+    ]
+  })
+  gulp.watch(['./src/js/*.js', './src/js/*/*.js'], ['browserify'])
+  gulp.watch(['./src/css/*.scss', './src/css/*/*.scss'], ['sass'])
+  gulp.watch(['./src/images/*', './src/images/*/*'], ['imagemin'])
+})
 
 // eslint 检测
 gulp.task('lint', function() {
@@ -39,19 +62,6 @@ gulp.task('browserify', ['lint'], ()=> {
   .pipe(browserSync.reload({stream: true}))
   .pipe(notify({ message: 'browserify task complete' }))
 })
-// gulp.task('js', ['lint'], function() {
-//   gulp.src(['./src/js/*.js', './src/js/*/*.js'])
-//     .pipe(sourcemaps.init())
-//     .pipe(babel({
-//       presets: ["es2015"]
-//     }))
-//     .pipe(plumber())
-//     .pipe(uglify())
-//     .pipe(sourcemaps.write('.'))
-//     .pipe(gulp.dest('./public/dist/js/'))
-//     .pipe(browserSync.reload({stream: true}))
-//     .pipe(notify('JS Task Complete!'))
-// })
 
 // 编辑 sass
 gulp.task('sass', function() {
@@ -75,12 +85,6 @@ gulp.task('images', function() {
 })
 
 // 监视文件变动
-gulp.task('watch', function() {
-  gulp.watch(['./src/js/*.js', './src/js/*/*.js'], ['browserify'])
-  gulp.watch(['./src/css/*.scss', './src/css/*/*.scss'], ['sass'])
-  gulp.watch(['./src/images/*', './src/images/*/*'], ['imagemin'])
-})
-
-gulp.task('default', ['browserify', 'sass', 'images'])
+gulp.task('watch', ['server'])
 
 gulp.task('build', ['browserify', 'sass', 'images'])
