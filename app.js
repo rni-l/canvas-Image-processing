@@ -7,9 +7,9 @@ var bodyParser = require('body-parser')
 var session = require('express-session')
 
 var config = require('./config')
-
+var db = require('./lib/db/db.js')
 var app = express()
-
+db()
 // 设置模板引擎
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'pug')
