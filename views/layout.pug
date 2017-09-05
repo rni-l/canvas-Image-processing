@@ -8,7 +8,7 @@ html
       !function(a, b) {
         function c() {
             var b = f.getBoundingClientRect().width;
-            b / i > 540 && (b = 540 * i);
+            b / i > 750 && (b = 750 * i);
             var c = b / 10;
             f.style.fontSize = c + "px", k.rem = a.rem = c
         }
@@ -55,9 +55,13 @@ html
             return "string" == typeof a && a.match(/px$/) && (b += "rem"), b
         }
       }(window, window.lib || (window.lib = {}));
-    script(src='./common/js/jquery.js')
     block scripts
   body
     include ./components/header.pug
-    block content
+    div
+      block content
+    block script_f
+      script(src='./common/js/jquery.js')
+    block script_b
     block foot
+    

@@ -1,7 +1,20 @@
-doctype html
-
-html
-  head
-    title 服务器出错，请稍后重试
-  body
-    p 服务器出错，请稍后重试
+extends ./layout.pug
+block content
+  main.page-bg
+    div.login
+      div.login-wrap
+        div.form-title 登录
+      form(class='form-wrap' method='post' action='/')
+        label.form-layout
+          span.form-layout-txt 邮箱：
+          input(type='text' name='email' class='form-layout-input form-layout-input-email' placeholder='请输入邮箱')
+        label.form-layout
+          span.form-layout-txt 密码：
+          input(type='password' name='pwd' class='form-layout-input form-layout-input-pwd' placeholder='请输入密码')
+        label.form-layout
+          span.form-layout-txt 验证码：
+          input(type='text' class='form-layout-input ' placeholder='请输入验证码')
+      div(class='level_center')
+        button(class='form-submit' type='submit') 登录
+  block script_b
+    script(src='/dist/js/form/login.js')

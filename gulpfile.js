@@ -38,34 +38,55 @@ gulp.task('server', function() {
   // watch,当文件变化后，自动生成相应的文件
   gulp.watch([`${jsPath}/*.js`, `${jsPath}/*/*.js`], ['js'])
   gulp.watch([`${cssPath}/*.scss`, `${cssPath}/*/*.scss`], ['sass'])
-  gulp.watch([`${imagePath}/*`, `${imagePath}/*/*`], ['imagemin'])
-  // 重新加载
+  gulp.watch([`${imagePath}/*`, `${imagePath}/*/*`], ['images'])
+  // 浏览器重载，会根据情况是否重新加载页面
   gulp.watch("*.html").on('change', browserSync.reload);
 })
 
 // eslint 检测
 gulp.task('lint', function() {
   gulp.src([`${jsPath}/*.js`, `${jsPath}/*/*.js`])
+    .pipe(plumber())
     .pipe(eslint({useEslintrc: true}))
     .pipe(eslint.format())
     .pipe(eslint.failAfterError())
 })
 
-// js
-gulp.task('js', ['lint'], ()=> {
+function bundleJs(path) {
   browserify({
-    entries: [`${jsPath}index/main.js`], // 入口文件
+    entries: [`${jsPath}${path.entry}.js`], // 入口文件
     debug: true, // 告知Browserify在运行同时生成内联sourcemap用于调试
   })
-  .transform("babelify", {presets: ["es2015", "stage-0"]}) // 转换es6代码，es7
+  .transform("babelify", {presets: ["es2015"]}) // 转换es6代码，es7
   .bundle() // 合并打包
-  .pipe(source('bundle.js')) // 将常规流转换为包含Stream的vinyl对象，并且重命名
+  .pipe(source(`${path.output}${path.outputName ? path.outputName : "bundle"}.js`)) // 将常规流转换为包含Stream的vinyl对象，并且重命名
   .pipe(buffer()) // 将vinyl对象内容中的Stream转换为Buffer
   .pipe(sourcemaps.init({loadMaps: true})) // 从 browserify 文件载入 map
+  // .pipe(uglify())
   .pipe(sourcemaps.write('.')) // 写入 .map 文件
   .pipe(gulp.dest('./public/dist/js/')) // 输出打包
   .pipe(browserSync.reload({stream: true})) // browser-sync自动刷新
   .pipe(notify({ message: 'browserify task complete' })) // 告知完成任务
+}
+
+// js
+gulp.task('js', ['lint'], ()=> {
+  // 生成多文件
+  const path = [{
+    entry: '/index/main',
+    output: '/js/index/'
+  }, {
+    entry: '/form/login',
+    output: '/js/form/',
+    outputName: 'login'
+  }, {
+    entry: '/form/register',
+    output: '/js/form/',
+    outputName: 'register'
+  }]
+  path.forEach((v) => {
+    bundleJs(v)
+  })
 })
 
 // sass

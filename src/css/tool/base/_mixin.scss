@@ -192,3 +192,12 @@ $btnTxtColor: #757575;
 	    -webkit-flex:$attr;
 	    flex:$attr;
 	}
+  @mixin level_center{
+  	@include flex;@include f_jc_center;
+  }
+  @mixin vertical_center{
+  	@include flex;@include f_ai_center;
+  }
+  @mixin all_center{
+  	@include level_center;@include f_ai_center;
+  }

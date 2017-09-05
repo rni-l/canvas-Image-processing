@@ -10,10 +10,14 @@ body{
 	-webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 
-.page_bg{
+.page-bg{
   background: $bcBg;
   height: 100vh;
 }
+// components
+@import 'components/header';
 
+// page
 @import 'home';
+@import 'play';
 @import 'login';
