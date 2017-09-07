@@ -1,0 +1,12 @@
+extends ./layout.pug
+block content
+  main.page-bg
+    div.home-wrap
+    -console.log(status)
+    - if (status) 
+      - if (status.errCode === 200)
+        div 注册成功
+      - else
+        div= status.msg
+    - else
+      div 网络错误

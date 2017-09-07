@@ -9,7 +9,7 @@
 * `clone`项目
 * `cnpm i`
 * `gulp build` (先生成静态文件)
-* 复制`config.js-explame`文件为`config.js`，并修改配置信息(修改端口号就好了)
+* 复制`_config.js`文件为`config.js`，并修改配置信息(修改端口号就好了)
 * `npm run watch` (进行文件的监听)
 * 另开一个窗口，`npm run start` (开启node服务)
 

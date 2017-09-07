@@ -3,12 +3,3 @@ block content
   main.page-bg
     div.home-wrap
       h1 这就是首页！！！
-    -console.log(status)
-    - if (status) 
-      -console.log(data)
-      - if (status.errCode === 200)
-        div 注册成功
-      - else
-        div= status.msg
-    - else
-      div 网络错误
