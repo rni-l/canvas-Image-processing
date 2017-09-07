@@ -52,7 +52,9 @@ router.post('/', function(req, res) {
     res.render('index', data)
   })
 })
-
+// router.get('/success',(req, res) => {
+//   res.render('registerSuccess')
+// })
 // 跳转注册成功页面
 router.post('/success', function(req, res) {
   api.register(req.body).then(data => {

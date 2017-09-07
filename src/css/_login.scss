@@ -40,4 +40,33 @@
     color: #D8D7D7;
     font-size: to(24);
   }
+  // 注册成功
+  &-success{
+    text-align: center;
+    font-size: to(42);
+    padding-top: to(50);
+    &-title{
+      font-size: to(56);
+      color: $bcTxt;
+    }
+    &-error{
+      color: $errorColor;
+      padding: to(30) 0;
+    }
+    &-link{
+      color: $bcTxt;
+      padding-bottom: to(10);
+      position: relative;
+      &::after{
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: to(200);
+        height: 1px;
+        background: currentColor;
+      }
+    }
+  }
 }
