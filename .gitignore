@@ -1,7 +1,12 @@
 .DS_Store
 node_modules/
 npm-debug.log
+npm-debug.log.*
 
 # Gulp
 public/dist
 public/img
+
+logs/
+
+config.js
