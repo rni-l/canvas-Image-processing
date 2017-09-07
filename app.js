@@ -71,6 +71,7 @@ if (process.env.NODE_ENV === 'development') {
   // development error handler - 打印错误
   app.use(function(err, req, res, next) {
     res.status(err.status || 500)
+    console.log('message:', err.message)
     res.render('default/error', {
       message: err.message,
       error: err

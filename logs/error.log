@@ -1,0 +1,102 @@
+[2017-09-07 14:17:41.753] [ERROR] error - / TypeError: Cannot read property 'token' of undefined
+    at i:\canvas-Image-processing\routes\index.js:10:11
+    at Layer.handle [as handle_request] (I:\canvas-Image-processing\node_modules\.4.15.4@express\lib\router\layer.js:95:5)
+    at next (I:\canvas-Image-processing\node_modules\.4.15.4@express\lib\router\route.js:137:13)
+    at Route.dispatch (I:\canvas-Image-processing\node_modules\.4.15.4@express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (I:\canvas-Image-processing\node_modules\.4.15.4@express\lib\router\layer.js:95:5)
+    at I:\canvas-Image-processing\node_modules\.4.15.4@express\lib\router\index.js:281:22
+    at Function.process_params (I:\canvas-Image-processing\node_modules\.4.15.4@express\lib\router\index.js:335:12)
+    at next (I:\canvas-Image-processing\node_modules\.4.15.4@express\lib\router\index.js:275:10)
+    at Function.handle (I:\canvas-Image-processing\node_modules\.4.15.4@express\lib\router\index.js:174:3)
+    at router (I:\canvas-Image-processing\node_modules\.4.15.4@express\lib\router\index.js:47:12)
+    at Layer.handle [as handle_request] (I:\canvas-Image-processing\node_modules\.4.15.4@express\lib\router\layer.js:95:5)
+    at trim_prefix (I:\canvas-Image-processing\node_modules\.4.15.4@express\lib\router\index.js:317:13)
+    at I:\canvas-Image-processing\node_modules\.4.15.4@express\lib\router\index.js:284:7
+    at Function.process_params (I:\canvas-Image-processing\node_modules\.4.15.4@express\lib\router\index.js:335:12)
+    at next (I:\canvas-Image-processing\node_modules\.4.15.4@express\lib\router\index.js:275:10)
+    at I:\canvas-Image-processing\node_modules\.1.1.1@log4js\lib\connect-logger.js:103:5
+[2017-09-07 14:17:49.962] [ERROR] error - / TypeError: Cannot read property 'token' of undefined
+    at i:\canvas-Image-processing\routes\index.js:10:11
+    at Layer.handle [as handle_request] (I:\canvas-Image-processing\node_modules\.4.15.4@express\lib\router\layer.js:95:5)
+    at next (I:\canvas-Image-processing\node_modules\.4.15.4@express\lib\router\route.js:137:13)
+    at Route.dispatch (I:\canvas-Image-processing\node_modules\.4.15.4@express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (I:\canvas-Image-processing\node_modules\.4.15.4@express\lib\router\layer.js:95:5)
+    at I:\canvas-Image-processing\node_modules\.4.15.4@express\lib\router\index.js:281:22
+    at Function.process_params (I:\canvas-Image-processing\node_modules\.4.15.4@express\lib\router\index.js:335:12)
+    at next (I:\canvas-Image-processing\node_modules\.4.15.4@express\lib\router\index.js:275:10)
+    at Function.handle (I:\canvas-Image-processing\node_modules\.4.15.4@express\lib\router\index.js:174:3)
+    at router (I:\canvas-Image-processing\node_modules\.4.15.4@express\lib\router\index.js:47:12)
+    at Layer.handle [as handle_request] (I:\canvas-Image-processing\node_modules\.4.15.4@express\lib\router\layer.js:95:5)
+    at trim_prefix (I:\canvas-Image-processing\node_modules\.4.15.4@express\lib\router\index.js:317:13)
+    at I:\canvas-Image-processing\node_modules\.4.15.4@express\lib\router\index.js:284:7
+    at Function.process_params (I:\canvas-Image-processing\node_modules\.4.15.4@express\lib\router\index.js:335:12)
+    at next (I:\canvas-Image-processing\node_modules\.4.15.4@express\lib\router\index.js:275:10)
+    at I:\canvas-Image-processing\node_modules\.1.1.1@log4js\lib\connect-logger.js:103:5
+[2017-09-07 14:18:06.429] [ERROR] error - / TypeError: Cannot read property 'token' of undefined
+    at i:\canvas-Image-processing\routes\index.js:10:11
+    at Layer.handle [as handle_request] (I:\canvas-Image-processing\node_modules\.4.15.4@express\lib\router\layer.js:95:5)
+    at next (I:\canvas-Image-processing\node_modules\.4.15.4@express\lib\router\route.js:137:13)
+    at Route.dispatch (I:\canvas-Image-processing\node_modules\.4.15.4@express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (I:\canvas-Image-processing\node_modules\.4.15.4@express\lib\router\layer.js:95:5)
+    at I:\canvas-Image-processing\node_modules\.4.15.4@express\lib\router\index.js:281:22
+    at Function.process_params (I:\canvas-Image-processing\node_modules\.4.15.4@express\lib\router\index.js:335:12)
+    at next (I:\canvas-Image-processing\node_modules\.4.15.4@express\lib\router\index.js:275:10)
+    at Function.handle (I:\canvas-Image-processing\node_modules\.4.15.4@express\lib\router\index.js:174:3)
+    at router (I:\canvas-Image-processing\node_modules\.4.15.4@express\lib\router\index.js:47:12)
+    at Layer.handle [as handle_request] (I:\canvas-Image-processing\node_modules\.4.15.4@express\lib\router\layer.js:95:5)
+    at trim_prefix (I:\canvas-Image-processing\node_modules\.4.15.4@express\lib\router\index.js:317:13)
+    at I:\canvas-Image-processing\node_modules\.4.15.4@express\lib\router\index.js:284:7
+    at Function.process_params (I:\canvas-Image-processing\node_modules\.4.15.4@express\lib\router\index.js:335:12)
+    at next (I:\canvas-Image-processing\node_modules\.4.15.4@express\lib\router\index.js:275:10)
+    at I:\canvas-Image-processing\node_modules\.1.1.1@log4js\lib\connect-logger.js:103:5
+[2017-09-07 14:18:56.092] [ERROR] error - / TypeError: Cannot read property 'token' of undefined
+    at i:\canvas-Image-processing\routes\index.js:10:11
+    at Layer.handle [as handle_request] (I:\canvas-Image-processing\node_modules\.4.15.4@express\lib\router\layer.js:95:5)
+    at next (I:\canvas-Image-processing\node_modules\.4.15.4@express\lib\router\route.js:137:13)
+    at Route.dispatch (I:\canvas-Image-processing\node_modules\.4.15.4@express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (I:\canvas-Image-processing\node_modules\.4.15.4@express\lib\router\layer.js:95:5)
+    at I:\canvas-Image-processing\node_modules\.4.15.4@express\lib\router\index.js:281:22
+    at Function.process_params (I:\canvas-Image-processing\node_modules\.4.15.4@express\lib\router\index.js:335:12)
+    at next (I:\canvas-Image-processing\node_modules\.4.15.4@express\lib\router\index.js:275:10)
+    at Function.handle (I:\canvas-Image-processing\node_modules\.4.15.4@express\lib\router\index.js:174:3)
+    at router (I:\canvas-Image-processing\node_modules\.4.15.4@express\lib\router\index.js:47:12)
+    at Layer.handle [as handle_request] (I:\canvas-Image-processing\node_modules\.4.15.4@express\lib\router\layer.js:95:5)
+    at trim_prefix (I:\canvas-Image-processing\node_modules\.4.15.4@express\lib\router\index.js:317:13)
+    at I:\canvas-Image-processing\node_modules\.4.15.4@express\lib\router\index.js:284:7
+    at Function.process_params (I:\canvas-Image-processing\node_modules\.4.15.4@express\lib\router\index.js:335:12)
+    at next (I:\canvas-Image-processing\node_modules\.4.15.4@express\lib\router\index.js:275:10)
+    at I:\canvas-Image-processing\node_modules\.1.1.1@log4js\lib\connect-logger.js:103:5
+[2017-09-07 14:19:28.954] [ERROR] error - / TypeError: Cannot read property 'token' of undefined
+    at i:\canvas-Image-processing\routes\index.js:10:11
+    at Layer.handle [as handle_request] (I:\canvas-Image-processing\node_modules\.4.15.4@express\lib\router\layer.js:95:5)
+    at next (I:\canvas-Image-processing\node_modules\.4.15.4@express\lib\router\route.js:137:13)
+    at Route.dispatch (I:\canvas-Image-processing\node_modules\.4.15.4@express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (I:\canvas-Image-processing\node_modules\.4.15.4@express\lib\router\layer.js:95:5)
+    at I:\canvas-Image-processing\node_modules\.4.15.4@express\lib\router\index.js:281:22
+    at Function.process_params (I:\canvas-Image-processing\node_modules\.4.15.4@express\lib\router\index.js:335:12)
+    at next (I:\canvas-Image-processing\node_modules\.4.15.4@express\lib\router\index.js:275:10)
+    at Function.handle (I:\canvas-Image-processing\node_modules\.4.15.4@express\lib\router\index.js:174:3)
+    at router (I:\canvas-Image-processing\node_modules\.4.15.4@express\lib\router\index.js:47:12)
+    at Layer.handle [as handle_request] (I:\canvas-Image-processing\node_modules\.4.15.4@express\lib\router\layer.js:95:5)
+    at trim_prefix (I:\canvas-Image-processing\node_modules\.4.15.4@express\lib\router\index.js:317:13)
+    at I:\canvas-Image-processing\node_modules\.4.15.4@express\lib\router\index.js:284:7
+    at Function.process_params (I:\canvas-Image-processing\node_modules\.4.15.4@express\lib\router\index.js:335:12)
+    at next (I:\canvas-Image-processing\node_modules\.4.15.4@express\lib\router\index.js:275:10)
+    at I:\canvas-Image-processing\node_modules\.1.1.1@log4js\lib\connect-logger.js:103:5
+[2017-09-07 14:20:09.271] [ERROR] error - / TypeError: Cannot read property 'token' of undefined
+    at i:\canvas-Image-processing\routes\index.js:10:11
+    at Layer.handle [as handle_request] (I:\canvas-Image-processing\node_modules\.4.15.4@express\lib\router\layer.js:95:5)
+    at next (I:\canvas-Image-processing\node_modules\.4.15.4@express\lib\router\route.js:137:13)
+    at Route.dispatch (I:\canvas-Image-processing\node_modules\.4.15.4@express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (I:\canvas-Image-processing\node_modules\.4.15.4@express\lib\router\layer.js:95:5)
+    at I:\canvas-Image-processing\node_modules\.4.15.4@express\lib\router\index.js:281:22
+    at Function.process_params (I:\canvas-Image-processing\node_modules\.4.15.4@express\lib\router\index.js:335:12)
+    at next (I:\canvas-Image-processing\node_modules\.4.15.4@express\lib\router\index.js:275:10)
+    at Function.handle (I:\canvas-Image-processing\node_modules\.4.15.4@express\lib\router\index.js:174:3)
+    at router (I:\canvas-Image-processing\node_modules\.4.15.4@express\lib\router\index.js:47:12)
+    at Layer.handle [as handle_request] (I:\canvas-Image-processing\node_modules\.4.15.4@express\lib\router\layer.js:95:5)
+    at trim_prefix (I:\canvas-Image-processing\node_modules\.4.15.4@express\lib\router\index.js:317:13)
+    at I:\canvas-Image-processing\node_modules\.4.15.4@express\lib\router\index.js:284:7
+    at Function.process_params (I:\canvas-Image-processing\node_modules\.4.15.4@express\lib\router\index.js:335:12)
+    at next (I:\canvas-Image-processing\node_modules\.4.15.4@express\lib\router\index.js:275:10)
+    at I:\canvas-Image-processing\node_modules\.1.1.1@log4js\lib\connect-logger.js:103:5
