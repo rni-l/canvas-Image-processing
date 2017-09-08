@@ -2,7 +2,7 @@
 
 > 这个demo，主要是记录我在移动端拍照，处理图片一些功能的总结。现在开始进行二次开发，添加个人用户和相册功能。
 
-这里是[demo](https://www.rni-l.com/canvas-Image-processing/)链接，请用手机或者浏览器的手机模式观看。
+这里是[demo](http://www.rni-l.com/canvas-Image-processing/)链接，请用手机或者浏览器的手机模式观看。
 
 ## 如何进行开发
 
