@@ -5,13 +5,14 @@ const sendMsg = require('./../lib/util/sendMsg.js')
 
 // 判断是否要重定向
 let ifRedict = false,
-  ifCheckRedirect = false
+  ifCheckRedirect = false,
+  userId = 0
 
 // 中间件，判断是否有登录状态
 router.use('/', (req, res, next) => {
   const path = req.path
   console.log('path:', path)
-  if (ifCheckRedirect) {
+  if (ifCheckRedirect || /api/.test(path)) {
     ifCheckRedirect = false
     console.log('不用检验login')
     return next()
@@ -28,6 +29,7 @@ router.use('/', (req, res, next) => {
         console.log('验证通过')
         // return res.render('index', userData)
         ifRedict = false
+        userId = userData.data._id
       } else {
         console.log('重定向到login页面')
         // 重新登录
@@ -49,7 +51,8 @@ router.get('/', function(req, res) {
     ifRedict = false
     return res.redirect('login')
   }
-  res.render('index')
+  console.log('userId:', userId)
+  res.render('index', { userId: userId })
 })
 
 // 跳转到登录成功页面
@@ -66,6 +69,7 @@ router.post('/login', function(req, res) {
       token: data.data.token,
       id: data.data._id
     }
+    userId = data.data._id
     res.cookie('token', data.data.token, { expires: new Date(Date.now() + 3600*24*3) })
     ifCheckRedirect = true
     // 登录成功，重定向到首页
@@ -89,7 +93,7 @@ router.post('/success', function(req, res) {
       }
       res.cookie('token', data.data.token, { expires: new Date(Date.now() + 3600*24*3) })
       // 发送邮箱
-      sendMsg()
+      // sendMsg()
     }
     res.render('registerSuccess', data)
   })

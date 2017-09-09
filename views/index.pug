@@ -54,6 +54,7 @@ head
       }
     }(window, window.lib || (window.lib = {}))
   link(rel="stylesheet" href="dist/css/index.css")
+  script(src='common/js/jquery.js')
 body
   - if (true)
     //- !-- 内容 --
@@ -68,7 +69,7 @@ body
       section(class="main_bottom flex f_jc_sa f_ai_center")
         //- !-- 上传图片按钮 --
         div(class="btnType file_wrap")
-          input(type="file" id='file' accept="image/jpg,image/png,image/gif,img/jpeg")
+          input(type="file" id='file' accept="image/jpg, img/jpeg")
           p 点击上传图片
         //- !-- 生成图片按钮 --
         div(class='btnType dn' id='create') 生成图片
@@ -100,6 +101,7 @@ body
         div(class="close pos_a") 关闭
       //- !-- 侧边栏 --
       aside(id="aside")
+        div(id='user' userId= userId)
         div(class="aside_wrap flex f_dire_c f_jc_sa f_ai_center")
           //- !-- 颜色按钮 --
           div(class="colorBtn") 

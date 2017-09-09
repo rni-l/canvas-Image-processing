@@ -31,6 +31,9 @@ function createImg(e) {
   opts.oShowImg.src = oCan.toDataURL('image/png')
   opts.oShowImg.style.display = 'block'
   opts.oShowImg.style.position = 'static'
+  $.post('/api/savePic', {id: document.querySelector('#user').getAttribute('userId'), url: opts.oShowImg.src}, (data) => {
+    console.log(data)
+  })
   document.querySelector('.main_bottom').innerHTML = '<p class="success_txt">生成图片成功！长按可保存图片</p>'
 }
 
