@@ -9,7 +9,7 @@ const gulp = require('gulp'),
   sourcemaps = require('gulp-sourcemaps'),
   plumber = require('gulp-plumber'),
   babel = require('gulp-babel'),
-  notify = require('gulp-notify'),
+  // notify = require('gulp-notify'),
   babelify = require('babelify')
 
 // browserify
@@ -66,7 +66,7 @@ function bundleJs(path) {
   .pipe(sourcemaps.write('.')) // 写入 .map 文件
   .pipe(gulp.dest('./public/dist/js/')) // 输出打包
   .pipe(browserSync.reload({stream: true})) // browser-sync自动刷新
-  .pipe(notify({ message: 'browserify task complete' })) // 告知完成任务
+  // .pipe(notify({ message: 'browserify task complete' })) // 告知完成任务
 }
 
 // js
@@ -100,7 +100,7 @@ gulp.task('sass', function() {
     .pipe(cleanCSS({compatibility: 'ie9'})) // 压缩文件
     .pipe(gulp.dest('./public/dist/css'))
     .pipe(browserSync.stream())
-    .pipe(notify('CSS Task Complete!'))
+    // .pipe(notify('CSS Task Complete!'))
 })
 
 // 压缩图片
