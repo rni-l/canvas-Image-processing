@@ -10,3 +10,7 @@ public/img
 logs/
 
 config.js
+
+upload/
+
+.vscode/
