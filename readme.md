@@ -2,14 +2,14 @@
 
 > 这个demo，主要是记录我在移动端拍照，处理图片一些功能的总结。现在开始进行二次开发，添加个人用户和相册功能。
 
-这里是[demo](https://yiiouo.github.io/canvas-Image-processing/)链接，请用手机或者浏览器的手机模式观看。
+这里是[demo](http://www.rni-l.com/canvas-Image-processing/)链接，请用手机或者浏览器的手机模式观看。
 
 ## 如何进行开发
 
 * `clone`项目
 * `cnpm i`
 * `gulp build` (先生成静态文件)
-* 复制`config.js-explame`文件为`config.js`，并修改配置信息(修改端口号就好了)
+* 复制`_config.js`文件为`config.js`，并修改配置信息(修改端口号就好了)
 * `npm run watch` (进行文件的监听)
 * 另开一个窗口，`npm run start` (开启node服务)
 
@@ -21,7 +21,8 @@
 * 修改和美化版面 -- 完成
 * 使用gulp替换webpack(gulp进行多页面搭建相对容易点) -- 完成
 * 增加用户登录注册功能，可以有自己的小相册
-* 使用nodejs + mongodb，进行后台的开发
+* 使用mongodb数据库，使用mongoose进行数据操作
+* 添加邮箱功能
 
 ### 1.0版本
 

@@ -1,0 +1,26 @@
+extends ./layout.pug
+block content
+  main.page-bg
+    div.register
+      div.register-wrap
+        div.form-title 注册
+      form(class='form-wrap' method='post' action='/success')
+        label.form-layout
+          span.form-layout-txt 账号：
+          input(type='text' name='user' class='form-layout-input form-layout-input-user' placeholder='请输入用户名')
+        label.form-layout
+          span.form-layout-txt 邮箱：
+          input(type='text' name='email' class='form-layout-input form-layout-input-email' placeholder='请输入邮箱')
+        label.form-layout
+          span.form-layout-txt 密码：
+          input(type='password' name='pwd' placeholder='首字母大写，8-30位的数字或字母' class='form-layout-input form-layout-input-pwd')
+        label.form-layout
+          span.form-layout-txt 确认密码：
+          input(type='password' name='checkPwd' placeholder='确认密码' class='form-layout-input form-layout-input-checkPwd' )
+        label.form-layout
+          span.form-layout-txt 验证码：
+          input(type='text' class='form-layout-input' placeholder='请输入验证码')
+      div(class='level_center')
+        button(class='form-submit' type='submit') 注册
+  block script_b
+    script(src='/dist/js/form/register.js')

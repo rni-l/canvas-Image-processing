@@ -1,0 +1,15 @@
+extends ./layout.pug
+block content
+  main.page-bg
+    div.form-success
+      -console.log(status)
+      - if (status) 
+        - if (status.errCode === 200)
+          div(class='form-success-title') 注册成功
+          a(href='/') 去编辑图片吧~~
+        - else
+          div.form-success-error= status.message
+          a(href='/register' class='form-success-link') 重新注册
+      - else
+        div.form-success-error 网络错误，要重新注册~
+        a(href='/register' class='form-success-link') 重新注册

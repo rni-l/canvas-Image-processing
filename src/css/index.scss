@@ -1,5 +1,4 @@
 @import 'tool/common';
-@import 'home';
 html, body, .main{
 	height: 100%;
 }
@@ -10,3 +9,15 @@ body{
 	-webkit-highlight: none;
 	-webkit-tap-highlight-color: rgba(0,0,0,0);
 }
+
+.page-bg{
+  background: $bcBg;
+  height: 100vh;
+}
+// components
+@import 'components/header';
+
+// page
+@import 'home';
+@import 'play';
+@import 'login';

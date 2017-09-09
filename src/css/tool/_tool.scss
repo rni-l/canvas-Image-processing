@@ -25,7 +25,7 @@ em{font-style:normal;}
 a{text-decoration: none;color:black;font-size:100%;color:inherit;}
 a,img{display: block;}
 img{border:0;outline: 0;}
-input{background:transparent;border:0;outline: 0;}
+input, button{background:transparent;border:0;outline: 0;}
 html{font-size:100%;font-family:"Microsoft YaHei",Arial,Helvetica,sans-serif;}
 
 @mixin fm_h{font-family:SimHei,'黑体';}

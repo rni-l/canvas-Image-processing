@@ -31,11 +31,15 @@ function createImg(e) {
   opts.oShowImg.src = oCan.toDataURL('image/png')
   opts.oShowImg.style.display = 'block'
   opts.oShowImg.style.position = 'static'
+  $.post('/api/savePic', {id: document.querySelector('#user').getAttribute('userId'), url: opts.oShowImg.src}, (data) => {
+    console.log(data)
+  })
   document.querySelector('.main_bottom').innerHTML = '<p class="success_txt">生成图片成功！长按可保存图片</p>'
 }
 
 // 图片load回调方法
 function cacheImg(url, callback) {
+  console.log('load')
   if (!url) {
     callback.call()
     return false
@@ -149,7 +153,6 @@ function getImgData(params) {
       drawHeight: params.data.PixelYDimension || this.naturalHeight,
       params: params
     })
-    console.log(output)
     // 使用canvas旋转校正
     output.context.rotate(output.degree * Math.PI / 180)
     // 渲染新的图片

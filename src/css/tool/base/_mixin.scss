@@ -8,6 +8,7 @@ $bcTxt: #1B3646; // 文字颜色
 $bcBottomBg: #34434C; // 底部背景色
 $txtColor: #a7a7a7;
 $btnTxtColor: #757575;
+$errorColor: #855454; // warning颜色
 
 @function to($value) {
 	@return $value / 75 * 1rem;
@@ -192,3 +193,12 @@ $btnTxtColor: #757575;
 	    -webkit-flex:$attr;
 	    flex:$attr;
 	}
+  @mixin level_center{
+  	@include flex;@include f_jc_center;
+  }
+  @mixin vertical_center{
+  	@include flex;@include f_ai_center;
+  }
+  @mixin all_center{
+  	@include level_center;@include f_ai_center;
+  }

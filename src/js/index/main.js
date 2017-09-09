@@ -6,7 +6,6 @@ import './draw'
 import './lineData'
 import './filter'
 import './selectImgSize'
-
 // 添加fastclick
 document.addEventListener('DOMContentLoaded', () => {
   Fastclick.attach(document.body)

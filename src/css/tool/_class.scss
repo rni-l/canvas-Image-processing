@@ -31,6 +31,15 @@
 
   .f_as_stretch {@include f_as_stretch;}
   .f_as_cen {@include f_as_cen;}
+  .level_center{
+    @include level_center;
+  }
+  .vertical_center{
+    @include vertical_center;
+  }
+  .all_center{
+    @include all_center;
+  }
 
 .transfrom3d{@include transfrom3d;}
 //清除浮动

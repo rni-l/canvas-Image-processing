@@ -1,0 +1,73 @@
+.form{
+  &-title{
+    color: $bcTxt;
+    text-align: center;
+    font-size: to(32);
+    font-weight: bold;
+    padding: to(50) 0;
+    letter-spacing: 2px;
+  }
+  &-wrap{
+    padding: 0 to(20);
+  }
+  &-layout{
+    display: block;
+    margin-bottom: to(40);
+    padding: 0 to(20);
+    @include all_center;
+    &-txt, &-input{
+      display: block;
+    }
+    &-txt{
+      font-size: to(28);
+      padding-right: to(20);
+      width: to(140);
+      text-align: right;
+    }
+    &-input{
+      flex: 1;
+      border: solid 1px #D8D7D7;
+      padding: to(10) 0;
+      text-indent: .5em;
+      font-size: to(28);
+      border-radius: to(20);
+      box-shadow: 0 0 10px $txtColor;
+    }
+  }
+  &-submit{
+    padding: to(10) to(50);
+    border: solid 1px currentColor;
+    color: #D8D7D7;
+    font-size: to(24);
+  }
+  // 注册成功
+  &-success{
+    text-align: center;
+    font-size: to(42);
+    padding-top: to(50);
+    &-title{
+      font-size: to(56);
+      color: $bcTxt;
+      padding-bottom: to(50);
+    }
+    &-error{
+      color: $errorColor;
+      padding: to(30) 0;
+    }
+    &-link{
+      color: $bcTxt;
+      padding-bottom: to(10);
+      position: relative;
+      &::after{
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: to(200);
+        height: 1px;
+        background: currentColor;
+      }
+    }
+  }
+}
