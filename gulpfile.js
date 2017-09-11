@@ -64,28 +64,50 @@ function bundleJs(path) {
   .pipe(sourcemaps.init({loadMaps: true})) // 从 browserify 文件载入 map
   // .pipe(uglify())
   .pipe(sourcemaps.write('.')) // 写入 .map 文件
-  .pipe(gulp.dest('./public/dist/js/')) // 输出打包
+  .pipe(gulp.dest(`./public/dist/${path.outputName}/`)) // 输出打包
   .pipe(browserSync.reload({stream: true})) // browser-sync自动刷新
   // .pipe(notify({ message: 'browserify task complete' })) // 告知完成任务
 }
 
+function bundleJs2(path) {
+  browserify({
+    entries: [`${jsPath}${path.entry}.js`], // 入口文件
+    debug: true, // 告知Browserify在运行同时生成内联sourcemap用于调试
+  })
+  .transform("babelify", {presets: ["es2015"]}) // 转换es6代码，es7
+  .bundle() // 合并打包
+  .pipe(source(`${path.output}${path.outputName ? path.outputName : "bundle"}.js`)) // 将常规流转换为包含Stream的vinyl对象，并且重命名
+  .pipe(buffer()) // 将vinyl对象内容中的Stream转换为Buffer
+  .pipe(sourcemaps.init({loadMaps: true})) // 从 browserify 文件载入 map
+  .pipe(uglify())
+  .pipe(sourcemaps.write('.')) // 写入 .map 文件
+  .pipe(gulp.dest(`./public/dist/public/dist/dist/${path.outputName}/`)) // 输出打包
+  .pipe(browserSync.reload({stream: true})) // browser-sync自动刷新
+}
+// 生成多文件
+const jsEntryPath = [{
+  entry: '/index/main',
+  output: '/js/index/',
+  outputName: 'index'
+}, {
+  entry: '/form/login',
+  output: '/js/form/',
+  outputName: 'login'
+}, {
+  entry: '/form/register',
+  output: '/js/form/',
+  outputName: 'register'
+}]
 // js
 gulp.task('js', ['lint'], ()=> {
-  // 生成多文件
-  const path = [{
-    entry: '/index/main',
-    output: '/js/index/'
-  }, {
-    entry: '/form/login',
-    output: '/js/form/',
-    outputName: 'login'
-  }, {
-    entry: '/form/register',
-    output: '/js/form/',
-    outputName: 'register'
-  }]
-  path.forEach((v) => {
+  jsEntryPath.forEach((v) => {
     bundleJs(v)
+  })
+})
+
+gulp.task('js2', ['lint'], ()=> {
+  jsEntryPath.forEach((v) => {
+    bundleJs2(v)
   })
 })
 
@@ -120,3 +142,5 @@ gulp.task('images', function() {
 gulp.task('watch', ['server'])
 
 gulp.task('build', ['js', 'sass', 'images'])
+
+gulp.task('online', ['sass', 'images', 'js2'])
