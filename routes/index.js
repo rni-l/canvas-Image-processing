@@ -24,7 +24,6 @@ router.use('/', (req, res, next) => {
 
   if (session && session.token === token) {
     api.checkToken(token, res).then(userData => {
-      console.log('userData:', userData)
       if (userData.status.errCode === 200) {
         console.log('验证通过')
         // return res.render('index', userData)
@@ -45,13 +44,12 @@ router.use('/', (req, res, next) => {
   next()
 })
 
-/* GET home page. */
+// play页面
 router.get('/', function(req, res) {
   if (ifRedict) {
     ifRedict = false
     return res.redirect('login')
   }
-  console.log('userId:', userId)
   res.render('index', { userId: userId })
 })
 
@@ -77,10 +75,6 @@ router.post('/login', function(req, res) {
   })
 })
 
-// router.get('/success',(req, res) => {
-//   res.render('registerSuccess')
-// })
-
 // 跳转注册成功页面
 router.post('/success', function(req, res) {
   api.register(req.body).then(data => {
@@ -93,11 +87,35 @@ router.post('/success', function(req, res) {
       }
       res.cookie('token', data.data.token, { expires: new Date(Date.now() + 3600*24*3) })
       // 发送邮箱
-      // sendMsg()
+      sendMsg()
     }
     res.render('registerSuccess', data)
   })
 })
+
+// home页面
+router.get('/home',(req, res) => {
+  res.render('home', {userId: userId})
+})
+
+// 相册list
+router.get('/list', function(req, res) {
+  if (ifRedict) {
+    ifRedict = false
+    return res.redirect('login')
+  }
+  const queryId = req.query.d
+  if (!queryId) {
+    return res.redirect('home')
+  }
+  api.getList({
+    id: queryId
+  }).then(data => {
+    console.log('list', data)
+    res.render('list', { data: data })
+  })
+})
+
 
 router.post('/home', function(req, res) {
   if (ifRedict) {

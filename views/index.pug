@@ -128,7 +128,10 @@ body
         canvas(id='colorPicker')
         div(class="btnWrap")
       div(class="color_show pos_a dn")
-      script(src='dist/js/index/bundle.js')
-
+      div.successPage
+        a(href='/') 继续生成新的图片
+        a(href='/home') 回到首页
+        a(href='/list?d=' + userId) 查看相册
+      script(src='dist/js/index/index.js')
   - else
     div 未登陆

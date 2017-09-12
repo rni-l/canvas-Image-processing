@@ -221,3 +221,24 @@ $shadow: 0 0 10px 3px #b7a0a0;
     font-weight: bold;
     letter-spacing: 3px;
   }
+
+// 图片生成后的样式
+.successPage{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(#fff, .5);
+  color: $bcTxt;
+  display: flex;
+  justify-content: space-between;
+  padding: to(30);
+  box-sizing: border-box;
+  font-size: to(32);
+  display: none;
+  a{
+    border-bottom: 1px currentColor solid;
+    padding-bottom: to(5);
+  }
+}
+

@@ -1,0 +1,8 @@
+extends ./layout.pug
+block content
+  main.page-bg
+    div.list-wrap
+      ul
+        each v, i in data.data
+          li
+            img(src= v.url)

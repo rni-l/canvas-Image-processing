@@ -7,8 +7,9 @@
     "amd": true
   },
   "parser": "babel-eslint",
+  "ecmaFeatures": { "modules": true },
   "parserOptions": {
-    "ecmaVersion": 6,
+    "ecmaVersion": 6
   },
   "rules": {
     "no-console": "off", // 关闭：禁用 console

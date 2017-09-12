@@ -34,6 +34,7 @@ function createImg(e) {
   $.post('/api/savePic', {id: document.querySelector('#user').getAttribute('userId'), url: opts.oShowImg.src}, (data) => {
     console.log(data)
   })
+  document.querySelector('.successPage').style.display = 'flex'
   document.querySelector('.main_bottom').innerHTML = '<p class="success_txt">生成图片成功！长按可保存图片</p>'
 }
 
