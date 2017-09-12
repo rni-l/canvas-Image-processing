@@ -1,8 +1,22 @@
 extends ./layout.pug
+block link
+  link(rel="stylesheet", href="/common/css/swiper.min.css")
 block content
   main.page-bg
-    div.list-wrap
-      ul
+    div(class='list-wrap swiper-container')
+      ul.swiper-wrapper
         each v, i in data.data
-          li
+          li.swiper-slide
             img(src= v.url)
+      div.swiper-pagination
+block script_b
+  script(src='/common/js/swiper.jquery.min.js')
+  script.
+    $(function(){
+      new Swiper('.swiper-container', {
+        pagination: '.swiper-pagination',
+        slidesPerView: 1,
+        paginationClickable: true,
+        spaceBetween: 30
+      })
+    })

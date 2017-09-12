@@ -113,6 +113,8 @@ router.get('/list', function(req, res) {
   }).then(data => {
     console.log('list', data)
     res.render('list', { data: data })
+  }).catch(error => {
+    console.log('listError:', error)
   })
 })
 

@@ -1,4 +1,8 @@
 .list-wrap{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
   li{
     margin-bottom: to(30);
   }

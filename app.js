@@ -1,30 +1,25 @@
-var express = require('express')
-var path = require('path')
-var favicon = require('serve-favicon')
-var log4js = require('log4js')
-var cookieParser = require('cookie-parser')
-var bodyParser = require('body-parser')
-var session = require('express-session')
+const express = require('express')
+const path = require('path')
+const favicon = require('serve-favicon')
+const log4js = require('log4js')
+const cookieParser = require('cookie-parser')
+const bodyParser = require('body-parser')
+const session = require('express-session')
 
-var config = require('./config')
-var db = require('./lib/db/user.js')
-var app = express()
-// db.register({
-//   user: 'test4',
-//   pwd: '123',
-//   avatar: '123',
-//   email: 'erwer2@qq.com'
-// })
+const config = require('./config')
+const app = express()
+
 // 设置模板引擎
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'pug')
 
-app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')))
+app.use(favicon(path.join(__dirname, 'static', 'favicon.ico')))
+// 设置长度
 app.use(bodyParser.json({limit: '50mb'}))
 app.use(bodyParser.urlencoded({limit: '50mb', extended: false}))
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cookieParser())
-app.use(express.static(path.join(__dirname, 'public')))
+app.use(express.static(path.join(__dirname, 'static')))
 
 // session配置
 app.use(session({
@@ -63,14 +58,14 @@ app.use(require('./routes/index'))
 app.use(require('./routes/api'))
 
 // 如果执行到这步，说明没有匹配到路由，404
-app.use(function(req, res, next) {
+app.use(function(req, res) {
   res.status(404).render('404')
 })
 
 // error handlers
 if (process.env.NODE_ENV === 'development') {
   // development error handler - 打印错误
-  app.use(function(err, req, res, next) {
+  app.use(function(err, req, res) {
     res.status(err.status || 500)
     console.log('message:', err.message)
     res.render('default/error', {
@@ -80,7 +75,7 @@ if (process.env.NODE_ENV === 'development') {
   })
 } else {
   // production error handler - 提示用户出错
-  app.use(function(err, req, res, next) {
+  app.use(function(err, req, res) {
     log4js.getLogger('error').error(req.url, err)
     res.status(err.status || 500)
     res.render('error', {
@@ -92,8 +87,8 @@ if (process.env.NODE_ENV === 'development') {
 
 // start server
 if (!module.parent) {
-  var port = Number(process.env.PORT || config.port)
-  var server = app.listen(port, function () {
+  const port = Number(process.env.PORT || config.port)
+  const server = app.listen(port, () => {
     console.log('-----------------------------------------------------')
     console.log(config.name)
     console.log('Express server listening on port %s:%d in %s mode', server.address().address, port, app.settings.env)
