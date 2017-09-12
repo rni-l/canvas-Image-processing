@@ -16,6 +16,49 @@ let isCreatePic = false // 是否生成了图片
  *图片上传成功后 => 获取元数据 => 转化为base64 => 修正图片的宽高，显示的方向和图片的内存大小
 */
 
+function toBlob(dataURI) {
+  let byteString,
+    _split = dataURI.split(',')
+  if (_split[0].indexOf('base64') >= 0) {
+    // 转码base64
+    byteString = atob(_split[1])
+  } else {
+    // 不是base64，直接转码
+    byteString = unescape(_split[1])
+  }
+
+  // 获取图片类型
+  const mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0]
+
+  // write the bytes of the string to a typed array
+  let ia = new Uint8Array(byteString.length)
+  for (var i = 0; i < byteString.length; i++) {
+      ia[i] = byteString.charCodeAt(i)
+  }
+  
+  console.log(mimeString)
+
+  return new Blob([ia], {type: mimeString})
+}
+
+// formData上传图片
+function ajaxUpload(url, id) {
+  const form = new FormData()
+  form.append('url', toBlob(url))
+  form.append('id', id)
+  $.ajax({
+    url: '/api/savePic',
+    type: 'POST',
+    cache: false,
+    data: form,
+    processData: false,
+    contentType: false,
+    success: data => {
+      console.log(data)
+    }
+  })
+}
+
 // 生成图片
 function createImg(e) {
   e.preventDefault()
@@ -31,9 +74,10 @@ function createImg(e) {
   opts.oShowImg.src = oCan.toDataURL('image/png')
   opts.oShowImg.style.display = 'block'
   opts.oShowImg.style.position = 'static'
-  $.post('/api/savePic', {id: document.querySelector('#user').getAttribute('userId'), url: opts.oShowImg.src}, (data) => {
-    console.log(data)
-  })
+  // $.post('/api/savePic', {id: document.querySelector('#user').getAttribute('userId'), url: opts.oShowImg.src}, (data) => {
+  //   console.log(data)
+  // })
+  ajaxUpload(opts.oShowImg.src, document.querySelector('#user').getAttribute('userId'))
   document.querySelector('.successPage').style.display = 'flex'
   document.querySelector('.main_bottom').innerHTML = '<p class="success_txt">生成图片成功！长按可保存图片</p>'
 }

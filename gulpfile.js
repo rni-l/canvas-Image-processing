@@ -64,7 +64,7 @@ function bundleJs(path) {
   .pipe(sourcemaps.init({loadMaps: true})) // 从 browserify 文件载入 map
   // .pipe(uglify())
   .pipe(sourcemaps.write('.')) // 写入 .map 文件
-  .pipe(gulp.dest(`./public/dist/${path.outputName}/`)) // 输出打包
+  .pipe(gulp.dest(`./static/dist/${path.outputName}/`)) // 输出打包
   .pipe(browserSync.reload({stream: true})) // browser-sync自动刷新
   // .pipe(notify({ message: 'browserify task complete' })) // 告知完成任务
 }
@@ -81,7 +81,7 @@ function bundleJs2(path) {
   .pipe(sourcemaps.init({loadMaps: true})) // 从 browserify 文件载入 map
   .pipe(uglify())
   .pipe(sourcemaps.write('.')) // 写入 .map 文件
-  .pipe(gulp.dest(`./public/dist/public/dist/dist/${path.outputName}/`)) // 输出打包
+  .pipe(gulp.dest(`./static/dist/static/dist/dist/${path.outputName}/`)) // 输出打包
   .pipe(browserSync.reload({stream: true})) // browser-sync自动刷新
 }
 // 生成多文件
@@ -120,7 +120,7 @@ gulp.task('sass', function() {
       browsers: ['last 2 versions', 'last 3 Explorer versions']
     })) // 自动补全前缀
     .pipe(cleanCSS({compatibility: 'ie9'})) // 压缩文件
-    .pipe(gulp.dest('./public/dist/css'))
+    .pipe(gulp.dest('./static/dist/css'))
     .pipe(browserSync.stream())
     // .pipe(notify('CSS Task Complete!'))
 })
@@ -135,7 +135,7 @@ gulp.task('images', function() {
       interlaced: true, //类型：Boolean 默认：false 隔行扫描gif进行渲染
       multipass: true //类型：Boolean 默认：false 多次优化svg直到完全优化
     }))
-    .pipe(gulp.dest('./public/images'))
+    .pipe(gulp.dest('./static/images'))
 })
 
 // 监视文件变动
