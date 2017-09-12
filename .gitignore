@@ -4,8 +4,9 @@ npm-debug.log
 npm-debug.log.*
 
 # Gulp
-public/dist
-public/img
+static/dist
+static/images
+static/upload
 
 logs/
 
