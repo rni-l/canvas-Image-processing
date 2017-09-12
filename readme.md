@@ -2,7 +2,7 @@
 
 > 这个demo，主要是记录我在移动端拍照，处理图片一些功能的总结。现在开始进行二次开发，添加个人用户和相册功能。
 
-这里是[demo](http://www.rni-l.com/canvas-Image-processing/)链接，请用手机或者浏览器的手机模式观看。
+这里是[demo](http://canvas-image-processing.rni-l.com)链接，移动端的，欢迎注册使用。
 
 ## 如何进行开发
 
@@ -50,4 +50,4 @@
 3. 可以选择滤镜效果，这里使用了[一个滤镜插件](https://github.com/arahaya/ImageFilters.js)。这个滤镜插件有十几种选择，每种会有不同的参数。
 4. 最后就是生成图片，用户可以保存下来的。
 
-如果要传给后台的话，只需要把图片转成blod，再用formData上传就行。
+如果要传给后台的话，只需要把图片转成blob，再用formData上传就行。
