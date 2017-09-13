@@ -7,7 +7,7 @@ const sendMsg = require('./../lib/util/sendMsg.js')
 let ifRedict = false,
   ifCheckRedirect = false,
   userId = 0
-
+console.log(api.getCode({id: 1}))
 // 中间件，判断是否有登录状态
 router.use('/', (req, res, next) => {
   const path = req.path
