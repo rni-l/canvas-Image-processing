@@ -4,9 +4,7 @@ const api = require('./../lib/db/user.js')
 // 处理文件上传
 const multer  = require('multer')
 const multipartMiddleware = multer({ dest: './static/upload/'}).single('url')
-const Canvas = require('canvas')
-const canvas = new Canvas(100, 30),
-  ctx = canvas.getContext('2d')
+
 router.get('/testapi', function(req, res) {
   res.json({ title: 'Express' })
 })

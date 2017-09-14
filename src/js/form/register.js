@@ -6,7 +6,8 @@ $(function() {
     $email = $('.form-layout-input-email'),
     $pwd = $('.form-layout-input-pwd'),
     $checkPwd = $('.form-layout-input-checkPwd'),
-    $form = $('.form-wrap')
+    $form = $('.form-wrap'),
+    $prompt = $('.form-prompt')
   // 检验登录
   $('.form-submit').on('touchend', () => {
     let msg = ''
@@ -32,6 +33,7 @@ $(function() {
     }
     if (msg) {
       console.log('form msg', msg)
+      $prompt.html(msg)
       return
     }
     // 提交表单
