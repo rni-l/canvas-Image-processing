@@ -70,4 +70,18 @@
       }
     }
   }
+  // 错误信息
+  &-errorMsg{
+    padding: 0 0 to(40);
+    text-align: center;
+    color: $errorColor;
+    font-weight: bold;
+  }
+  &-prompt{
+    height: to(120);
+    line-height: to(120);
+    color: $errorColor;
+    text-align: center;
+    letter-spacing: 2px;
+  }
 }

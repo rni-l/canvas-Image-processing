@@ -62,6 +62,13 @@ router.post('/login', function(req, res) {
   // 登录
   api.login(req.body).then(data => {
     console.log('returnData:', data)
+    if (data.status.errCode !== 200) {
+      // 返回到login页面
+      return res.render('login', {
+        codeData: api.getCode(123),
+        data: data
+      })
+    }
     // 存储session
     req.session.uid = {
       token: data.data.token,
@@ -79,16 +86,19 @@ router.post('/login', function(req, res) {
 router.post('/success', function(req, res) {
   api.register(req.body).then(data => {
     console.log('data:', data)
-    if (data.status.errCode === 200) {
-      // 注册成功，存储token
-      req.session.uid = {
-        token: data.data.token,
-        id: data.data._id
-      }
-      res.cookie('token', data.data.token, { expires: new Date(Date.now() + 3600*24*3) })
-      // 发送邮箱
-      sendMsg()
+    if (data.status.errCode !== 200) {
+      return res.render('register', {
+        data: data
+      })
     }
+    // 注册成功，存储token
+    req.session.uid = {
+      token: data.data.token,
+      id: data.data._id
+    }
+    res.cookie('token', data.data.token, { expires: new Date(Date.now() + 3600*24*3) })
+    // 发送邮箱
+    sendMsg(data.data.email)
     res.render('registerSuccess', data)
   })
 })
@@ -137,7 +147,7 @@ router.get('/login', function(req, res) {
     return res.redirect('/')
   }
   ifRedict = false
-  res.render('login')
+  res.render('login', { codeData: api.getCode(123) })
 })
 
 router.get('/register', function(req, res) {

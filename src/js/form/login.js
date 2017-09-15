@@ -4,7 +4,9 @@ $(function() {
   // 缓存对象
   const $email = $('.form-layout-input-email'),
     $pwd = $('.form-layout-input-pwd'),
-    $form = $('.form-wrap')
+    $form = $('.form-wrap'),
+    $code = $('.form-layout-input-code'),
+    $prompt = $('.form-prompt')
   // 检验登录
   $('.form-submit').on('touchend', () => {
     let msg = ''
@@ -22,8 +24,12 @@ $(function() {
     if (!msg && !regexp.pwd.test(pwdVal)) {
       msg = '请输入正确的密码格式'
     }
+    if (!msg && !$code.val()) {
+      msg = '请输入验证码'
+    }
     if (msg) {
       console.log('form msg', msg)
+      $prompt.html(msg)
       return
     }
     console.log($form)

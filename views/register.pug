@@ -17,9 +17,10 @@ block content
         label.form-layout
           span.form-layout-txt 确认密码：
           input(type='password' name='checkPwd' placeholder='确认密码' class='form-layout-input form-layout-input-checkPwd' )
-        label.form-layout
-          span.form-layout-txt 验证码：
-          input(type='text' class='form-layout-input' placeholder='请输入验证码')
+      div.form-prompt  
+      -if (data && data.status.errCode !== 200) {
+        div.form-errorMsg= data.status.message
+      -}
       div(class='level_center')
         button(class='form-submit' type='submit') 注册
   block script_b

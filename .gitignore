@@ -15,3 +15,5 @@ config.js
 upload/
 
 .vscode/
+
+db.json
