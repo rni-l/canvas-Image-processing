@@ -2,7 +2,7 @@
   &-title{
     color: $bcTxt;
     text-align: center;
-    font-size: to(32);
+    font-size: to(48);
     font-weight: bold;
     padding: to(50) 0;
     letter-spacing: 2px;
@@ -13,16 +13,22 @@
   &-layout{
     display: block;
     margin-bottom: to(40);
-    padding: 0 to(20);
+    padding: 0 to(10);
     @include all_center;
     &-txt, &-input{
       display: block;
     }
+    &-left{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: to(80);
+      img{
+        width: to(50);
+      }
+    }
     &-txt{
       font-size: to(28);
-      padding-right: to(20);
-      width: to(140);
-      text-align: right;
     }
     &-input{
       flex: 1;
@@ -31,14 +37,17 @@
       text-indent: .5em;
       font-size: to(28);
       border-radius: to(20);
-      box-shadow: 0 0 10px $txtColor;
+      color: #fff;
+      &::-webkit-input-placeholder{
+        color: #fff;
+      }
     }
   }
   &-submit{
-    padding: to(10) to(50);
+    padding: to(5) to(80);
     border: solid 1px currentColor;
     color: #D8D7D7;
-    font-size: to(24);
+    font-size: to(42);
   }
   // 注册成功
   &-success{
@@ -76,6 +85,7 @@
     text-align: center;
     color: $errorColor;
     font-weight: bold;
+    font-size: to(42);
   }
   &-prompt{
     height: to(120);
@@ -83,5 +93,6 @@
     color: $errorColor;
     text-align: center;
     letter-spacing: 2px;
+    font-size: to(42);
   }
 }

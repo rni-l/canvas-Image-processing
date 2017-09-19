@@ -6,17 +6,21 @@ block content
         div.form-title 注册
       form(class='form-wrap' method='post' action='/success')
         label.form-layout
-          span.form-layout-txt 账号：
+          .form-layout-left
+            img(src='/images/icon/user.png')
           input(type='text' name='user' class='form-layout-input form-layout-input-user' placeholder='请输入用户名')
         label.form-layout
-          span.form-layout-txt 邮箱：
+          .form-layout-left
+            img(src='/images/icon/email.png')
           input(type='text' name='email' class='form-layout-input form-layout-input-email' placeholder='请输入邮箱')
         label.form-layout
-          span.form-layout-txt 密码：
-          input(type='password' name='pwd' placeholder='首字母大写，8-30位的数字或字母' class='form-layout-input form-layout-input-pwd')
+          .form-layout-left
+            img(src='/images/icon/password.png')
+          input(type='password' name='pwd' placeholder='请输入密码，首字母大写，8-30位的数字、字母' class='form-layout-input form-layout-input-pwd')
         label.form-layout
-          span.form-layout-txt 确认密码：
-          input(type='password' name='checkPwd' placeholder='确认密码' class='form-layout-input form-layout-input-checkPwd' )
+          .form-layout-left
+            img(src='/images/icon/password.png')
+          input(type='password' name='checkPwd' placeholder='请输入确认密码' class='form-layout-input form-layout-input-checkPwd' )
       div.form-prompt  
       -if (data && data.status.errCode !== 200) {
         div.form-errorMsg= data.status.message

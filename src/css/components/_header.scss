@@ -18,7 +18,33 @@
     font-size: to(24);
     color: $bcTxt;
   }
+  &-list{
+    position: relative;
+    margin-right: .5em;
+    padding-right: .5em;
+    &::after{
+      content: '|';
+      position: absolute;right: 0;top: 0;
+      width: 1px;height: 100%;
+      background: #fff;
+    }
+    &:last-child{
+      margin-right: 0;
+      &::after{
+        display: none;
+      }
+    }
+  }
   &-link{
     padding: 0 .1rem;
+    letter-spacing: 1px;
+  }
+  &-logo{
+    width: .9rem;
+    height: .9rem;
+    background: url(../../images/logo.jpg);
+    background-size: cover;
+    border-radius: 50%;
+    margin-left: .5em;
   }
 }

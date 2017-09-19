@@ -9,16 +9,19 @@ block content
         -console.log('login-data::', data)
         input(type='text' name='codeId' class='dn' value= codeId)
         label.form-layout
-          span.form-layout-txt 邮箱：
+          .form-layout-left
+            img(src='/images/icon/email.png')
           input(type='text' name='email' class='form-layout-input form-layout-input-email' placeholder='请输入邮箱')
         label.form-layout
-          span.form-layout-txt 密码：
+          .form-layout-left
+            img(src='/images/icon/password.png')
           input(type='password' name='pwd' class='form-layout-input form-layout-input-pwd' placeholder='请输入密码')
         label(class='form-layout')
           img(src= codeData.img)
         label.form-layout
-          span.form-layout-txt 验证码：
-          input(type='text' name='code' class='form-layout-input form-layout-input-code' placeholder='请输入验证码')
+          .form-layout-left
+            img(src='/images/icon/code.png')
+          input(type='text' name='code' class='form-layout-input form-layout-input-code' placeholder='请输入验证码，区分大小写')
       -if (data && data.status.errCode !== 200) {
         div.form-errorMsg= data.status.message
       -}

@@ -21,7 +21,7 @@ router.use('/', (req, res, next) => {
   // 先判断是否有登录
   const session = req.session.uid
   const token = req.cookies.token
-
+  console.log('session:', session)
   if (session && session.token === token) {
     api.checkToken(token, res).then(userData => {
       if (userData.status.errCode === 200) {
@@ -105,7 +105,7 @@ router.post('/success', function(req, res) {
 
 // home页面
 router.get('/home',(req, res) => {
-  res.render('home', {userId: userId})
+  res.render('home')
 })
 
 // 相册list
@@ -114,7 +114,9 @@ router.get('/list', function(req, res) {
     ifRedict = false
     return res.redirect('login')
   }
-  const queryId = req.query.d
+  // 获取session
+  const queryId = req.session.uid && req.session.uid.id
+  console.log('id：', queryId)
   if (!queryId) {
     return res.redirect('home')
   }
@@ -134,7 +136,6 @@ router.post('/home', function(req, res) {
     ifRedict = false
     return res.redirect('login')
   }
-  console.log('post home')
   // 注册
   api.register(req.body, res).then(data => {
     console.log(data)
