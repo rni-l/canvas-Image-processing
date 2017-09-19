@@ -6,21 +6,27 @@
 
 ## 如何进行开发
 
-注意，如果要在本地运行的话，要配置好 `node-canvas` ，不然会运行不了。你也可以 `clone` Tags v1.1版本运行
+注意，如果要在本地运行的话，要配置好 `node-canvas` ，不然会运行不了。这里提供了一个没有使用 `node-canvas` 的旧版本， `clone` Tags v1.1版本运行就好
 
-* `clone`项目
-* `cnpm i`
-* `gulp build` (先生成静态文件)
-* 复制`_config.js`文件为`config.js`，并修改配置信息(修改端口号就好了)
-* `npm run watch` (进行文件的监听)
-* 另开一个窗口，`npm run start` (开启node服务)
+    1. clone git@github.com:yiiouo/canvas-Image-processing.git
+    2. npm i // cnpm i
+    3. gulp build
+    4. cp _config.js config.js
+    5. `npm run start` (开启node服务)
+    6. 另开一个窗口，`npm run dev` (进行文件的监听)
 
 ## 主要功能
+
+### 1.3版本（开发中 ）
+
+* 修改页面样式，添加图标，美化页面
+* 规范好后台的api，编写一个文档
 
 ### 1.2版本
 
 * `windows` 和 `centos` 环境下，配置 `node-canvas` -- 完成
 * 验证码功能 -- 完成
+* 配置到 `centos` -- 完成
 
 ### 1.1版本
 
@@ -33,28 +39,20 @@
 
 ### 1.0版本
 
-* 上传图片  -- 完成
-* 改变图片展示的方式（居中，填充，拉伸）  -- 完成
-* 画布的涂鸦功能  -- 完成
-* 撤销涂鸦功能  -- 完成
-* 图片滤镜效果  -- 完成
-* 生成图片功能  -- 完成
-* 离线功能  -- 完成
-
-## 解决的问题
-
-1. 使用了webpack进行文件处理
-2. exif.js解决ios图片旋转问题
-3. 兼容图片处理问题，ios和android端
-4. fastclick.js处理移动端点击延迟问题。
-5. 使用gulp配置多页面开发
-
+* 上传图片 -- 完成
+* 改变图片展示的方式（居中，填充，拉伸）-- 完成
+* 画布的涂鸦功能 -- 完成
+* 撤销涂鸦功能 -- 完成
+* 图片滤镜效果 -- 完成
+* 生成图片功能 -- 完成
+* 离线功能 -- 完成
 
 ## 使用流程
 
-1. 用户拍照或者上传图片
-2. 在canvas显示出来，用户可以在canvas进行涂鸦，旋转笔触的粗细，颜色[（自己写了个颜色选择器）](https://github.com/yiiouo/canvas-colorPicker)等。
-3. 可以选择滤镜效果，这里使用了[一个滤镜插件](https://github.com/arahaya/ImageFilters.js)。这个滤镜插件有十几种选择，每种会有不同的参数。
-4. 最后就是生成图片，用户可以保存下来的。
+1. 用户注册登录
+2. 用户拍照或者上传图片
+3. 用户可以在canvas进行涂鸦，选择笔触的粗细，颜色[（自己写了个颜色选择器）](https://github.com/yiiouo/canvas-colorPicker)等
+4. 可以选择滤镜效果，这里使用了[一个滤镜插件](https://github.com/arahaya/ImageFilters.js)。这个滤镜插件有十几种选择，每种会有不同的参数
+5. 最后就是生成图片，用户可以保存到本地
+6. 点击相册，会显示用户生成过的图片
 
-如果要传给后台的话，只需要把图片转成blob，再用formData上传就行。
