@@ -75,7 +75,7 @@ router.post('/login', function(req, res) {
       id: data.data._id
     }
     userId = data.data._id
-    res.cookie('token', data.data.token, { expires: new Date(Date.now() + 3600*24*3) })
+    res.cookie('token', data.data.token, { maxAge: 3600000*24*3, httpOnly: true })
     ifCheckRedirect = true
     // 登录成功，重定向到首页
     res.redirect('/')
@@ -96,7 +96,7 @@ router.post('/success', function(req, res) {
       token: data.data.token,
       id: data.data._id
     }
-    res.cookie('token', data.data.token, { expires: new Date(Date.now() + 3600*24*3) })
+    res.cookie('token', data.data.token, { maxAge: 3600000*24*3, httpOnly: true })
     // 发送邮箱
     sendMsg(data.data.email)
     res.render('registerSuccess', data)
@@ -143,7 +143,6 @@ router.post('/home', function(req, res) {
 })
 
 router.get('/login', function(req, res) {
-  console.log('ifredict:', ifRedict)
   if (!ifRedict) {
     return res.redirect('/')
   }

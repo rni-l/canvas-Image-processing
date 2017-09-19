@@ -3,7 +3,7 @@ module.exports = {
   port: '6363',
   mongodbName: 'canvas',
   sessionSecret: 'test',
-  sessionExpire: 3600 * 24 * 7,
+  sessionExpire: 3600 * 24 * 7 * 1000,
   email: {
     user: '', // 发送邮箱
     emailPwd: '', // 发送邮箱的密码

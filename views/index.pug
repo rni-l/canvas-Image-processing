@@ -78,6 +78,7 @@ body
         div(class='btnType' id="revoke") 撤销
         //- !-- 侧边栏按钮 --
         div(class="btnType asideBtn") 工具
+        a(href='/list' class='toPersonPic btnType') 回到个人相册
       //- !-- 滤镜选择 --
       section(id="filterBox" )
         div(class='flex f_ai_center f_jc_center filterBox_wrap')
@@ -130,7 +131,6 @@ body
       div(class="color_show pos_a dn")
       div.successPage
         a(href='/') 继续生成新的图片
-        a(href='/home') 回到首页
         a(href='/list?d=' + userId) 查看相册
       script(src='dist/js/index/index.js')
   - else

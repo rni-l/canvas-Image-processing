@@ -36,4 +36,12 @@ $(function() {
     // 提交表单
     $form.submit()
   })
+  // 更新验证码
+  $('.codePic').on('click', function(v) {
+    $.get('/api/getCode', (res) => {
+      console.log(res)
+      $(this).attr('src', res.img)
+      $('.codeId').attr('value', res.id)
+    })
+  })
 })

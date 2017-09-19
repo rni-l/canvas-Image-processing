@@ -114,10 +114,6 @@ function showFun() {
   opts.isNewPic = true
 }
 
-// 使用离屏进行计算
-// function offScreen() {
-// }
-
 // 计算图片的宽高
 function computeWidthAndHeight(data) {
   let drawWidth = data.drawWidth,
@@ -254,6 +250,8 @@ function uploadFile() {
     alert('图片过大，请选择相对较小的图片')
     return false
   }
+  // 隐藏链接按钮
+  document.querySelector('.toPersonPic').style.display = 'none'
   // 图片处理中，提示层出现
   opts.showLoading('block')
   const reader = new FileReader()

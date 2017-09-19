@@ -7,7 +7,7 @@ block content
       form(class='form-wrap' method='post' action='/login')
         -var codeId = codeData.id
         -console.log('login-data::', data)
-        input(type='text' name='codeId' class='dn' value= codeId)
+        input(type='text' name='codeId' class='dn codeId' value= codeId)
         label.form-layout
           .form-layout-left
             img(src='/images/icon/email.png')
@@ -17,7 +17,7 @@ block content
             img(src='/images/icon/password.png')
           input(type='password' name='pwd' class='form-layout-input form-layout-input-pwd' placeholder='请输入密码')
         label(class='form-layout')
-          img(src= codeData.img)
+          img(class='codePic' src= codeData.img)
         label.form-layout
           .form-layout-left
             img(src='/images/icon/code.png')

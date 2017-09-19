@@ -5,8 +5,8 @@ const api = require('./../lib/db/user.js')
 const multer  = require('multer')
 const multipartMiddleware = multer({ dest: './static/upload/'}).single('url')
 
-router.get('/testapi', function(req, res) {
-  res.json({ title: 'Express' })
+router.get('/api/getCode', function(req, res) {
+  res.json(api.getCode())
 })
 
 router.post('/api/savePic', multipartMiddleware, (req, res) => {
