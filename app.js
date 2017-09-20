@@ -49,7 +49,7 @@ log4js.configure({
   ]
 })
 app.use(log4js.connectLogger(log4js.getLogger('http')))
-
+require('./lib/util/cleanDbData.js')()
 // API 转发
 // app.use('/api/*',require('./util/middleware')(config.serverUrl))
 
