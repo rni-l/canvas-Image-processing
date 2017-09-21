@@ -5,7 +5,7 @@ const log4js = require('log4js')
 const cookieParser = require('cookie-parser')
 const bodyParser = require('body-parser')
 const session = require('express-session')
-
+const printLog = require('./lib/util/printLog.js')
 const config = require('./config')
 const app = express()
 // 设置模板引擎
@@ -29,26 +29,27 @@ app.use(session({
 }))
 
 // 日志记录
-log4js.configure({
-  appenders: [
-    { type: 'console' },
-    {
-      type: 'dateFile', //文件输出
-      filename: 'logs/app.log',
-      pattern: "-yyyy-MM-dd",
-      backups: 7,
-      category: 'http'
-    },
-    {
-      type: 'dateFile', //文件输出
-      filename: 'logs/error.log',
-      pattern: "-yyyy-MM-dd",
-      backups: 7,
-      category: 'error'
-    }
-  ]
-})
-app.use(log4js.connectLogger(log4js.getLogger('http')))
+// log4js.configure({
+//   appenders: [
+//     { type: 'console' },
+//     {
+//       type: 'dateFile', //文件输出
+//       filename: 'logs/app.log',
+//       pattern: "-yyyy-MM-dd",
+//       backups: 7,
+//       category: 'http'
+//     },
+//     {
+//       type: 'dateFile', //文件输出
+//       filename: 'logs/error.log',
+//       pattern: "-yyyy-MM-dd",
+//       backups: 7,
+//       category: 'error'
+//     }
+//   ]
+// })
+// app.use(log4js.connectLogger(log4js.getLogger('http')))
+printLog.init(app)
 require('./lib/util/cleanDbData.js')()
 // API 转发
 // app.use('/api/*',require('./util/middleware')(config.serverUrl))
@@ -58,6 +59,7 @@ app.use(require('./routes/api'))
 
 // 如果执行到这步，说明没有匹配到路由，404
 app.use(function(req, res) {
+  printLog.getLogger('404').trace('path:', req.url)
   res.status(404).render('404')
 })
 
@@ -66,7 +68,7 @@ if (process.env.NODE_ENV === 'development') {
   // development error handler - 打印错误
   app.use(function(err, req, res) {
     res.status(err.status || 500)
-    console.log('message:', err.message)
+    printLog.getLogger('error').debug(req.url, err)
     res.render('default/error', {
       message: err.message,
       error: err
@@ -75,7 +77,7 @@ if (process.env.NODE_ENV === 'development') {
 } else {
   // production error handler - 提示用户出错
   app.use(function(err, req, res) {
-    log4js.getLogger('error').error(req.url, err)
+    printLog.getLogger('error').error(req.url, err)
     res.status(err.status || 500)
     res.render('error', {
       message: err.message,

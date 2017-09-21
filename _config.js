@@ -2,6 +2,8 @@ module.exports = {
   name: 'canvas-Image-processing',
   port: '6363',
   mongodbName: 'canvas',
+  mongodbUser: '',
+  mongodbPwd: '',
   sessionSecret: 'test',
   sessionExpire: 3600 * 24 * 7 * 1000,
   email: {
