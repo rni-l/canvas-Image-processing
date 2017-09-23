@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const api = require('./../lib/db/user.js')
+const picApi = require('./../lib/db/pics.js')
 const sendMsg = require('./../lib/util/sendMsg.js')
 
 // 判断是否要重定向
@@ -120,7 +121,7 @@ router.get('/list', function(req, res) {
   if (!queryId) {
     return res.redirect('home')
   }
-  api.getList({
+  picApi.getPics({
     id: queryId
   }).then(data => {
     console.log('list', data)

@@ -29,28 +29,11 @@ app.use(session({
 }))
 
 // 日志记录
-// log4js.configure({
-//   appenders: [
-//     { type: 'console' },
-//     {
-//       type: 'dateFile', //文件输出
-//       filename: 'logs/app.log',
-//       pattern: "-yyyy-MM-dd",
-//       backups: 7,
-//       category: 'http'
-//     },
-//     {
-//       type: 'dateFile', //文件输出
-//       filename: 'logs/error.log',
-//       pattern: "-yyyy-MM-dd",
-//       backups: 7,
-//       category: 'error'
-//     }
-//   ]
-// })
-// app.use(log4js.connectLogger(log4js.getLogger('http')))
 printLog.init(app)
+
+// 添加定时任务
 require('./lib/util/cleanDbData.js')()
+
 // API 转发
 // app.use('/api/*',require('./util/middleware')(config.serverUrl))
 

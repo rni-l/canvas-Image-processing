@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const api = require('./../lib/db/user.js')
+const api = require('./../lib/db/pics.js')
 // 处理文件上传
 const multer  = require('multer')
 const multipartMiddleware = multer({ dest: './static/upload/'}).single('url')
@@ -12,7 +12,7 @@ router.get('/api/getCode', function(req, res) {
 router.post('/api/savePic', multipartMiddleware, (req, res) => {
   const params = req.body
   params.name = `./static/upload/${req.file.filename}`
-  api.savePic(params).then(data => {
+  api.addPic(params).then(data => {
     res.json(data)
   })
 })
