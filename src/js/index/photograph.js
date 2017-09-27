@@ -33,7 +33,7 @@ function toBlob(dataURI) {
   // write the bytes of the string to a typed array
   let ia = new Uint8Array(byteString.length)
   for (var i = 0; i < byteString.length; i++) {
-      ia[i] = byteString.charCodeAt(i)
+    ia[i] = byteString.charCodeAt(i)
   }
   
   console.log(mimeString)

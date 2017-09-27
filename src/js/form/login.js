@@ -37,7 +37,7 @@ $(function() {
     $form.submit()
   })
   // 更新验证码
-  $('.codePic').on('click', function(v) {
+  $('.codePic').on('click', function() {
     $.get('/api/getCode', (res) => {
       console.log(res)
       $(this).attr('src', res.img)

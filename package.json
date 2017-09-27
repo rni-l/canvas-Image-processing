@@ -31,6 +31,7 @@
     "gulp-babel": "^7.0.0",
     "gulp-clean-css": "^3.7.0",
     "gulp-eslint": "^4.0.0",
+    "gulp-if": "^2.0.2",
     "gulp-imagemin": "^3.3.0",
     "gulp-notify": "^3.0.0",
     "gulp-plumber": "^1.1.0",

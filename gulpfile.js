@@ -10,7 +10,8 @@ const gulp = require('gulp'),
   plumber = require('gulp-plumber'),
   babel = require('gulp-babel'),
   // notify = require('gulp-notify'),
-  babelify = require('babelify')
+  babelify = require('babelify'),
+  gulpif = require('gulp-if')
 
 // browserify
 const browserify = require("browserify"),
@@ -21,14 +22,19 @@ const browserify = require("browserify"),
 const Config = require('./config.js')
 
 // 路径
-const jsPath = './src/js'
+const publicPath = './static'
+  jsPath = './src/js'
   cssPath = './src/css',
   imagePath = './src/images'
+
+// 是否压缩文件
+let ifUglify = false
 
 // 自动刷新
 const browserSync = require('browser-sync').create()
 // 配置代理
 gulp.task('server', function() {
+  ifUglify = false
   // 初始化
   browserSync.init({
     proxy: 'localhost:' + Config.port, // 开启代理
@@ -52,62 +58,42 @@ gulp.task('lint', function() {
     .pipe(eslint.failAfterError())
 })
 
-function bundleJs(path) {
+function buildJs(path) {
   browserify({
-    entries: [`${jsPath}${path.entry}.js`], // 入口文件
+    entries: [`${jsPath}${path.entry}`], // 入口文件
     debug: true, // 告知Browserify在运行同时生成内联sourcemap用于调试
   })
-  .transform("babelify", {presets: ["es2015"]}) // 转换es6代码，es7
+  .transform(babelify) // 转换es6代码，es7
   .bundle() // 合并打包
-  .pipe(source(`${path.output}${path.outputName ? path.outputName : "bundle"}.js`)) // 将常规流转换为包含Stream的vinyl对象，并且重命名
+  .pipe(source(`${path.outputName}`)) // 将常规流转换为包含Stream的vinyl对象，并且重命名
   .pipe(buffer()) // 将vinyl对象内容中的Stream转换为Buffer
+  .pipe(plumber())
   .pipe(sourcemaps.init({loadMaps: true})) // 从 browserify 文件载入 map
-  // .pipe(uglify())
+  .pipe(gulpif(ifUglify, uglify()))
   .pipe(sourcemaps.write('.')) // 写入 .map 文件
-  .pipe(gulp.dest(`./static/dist/${path.outputName}/`)) // 输出打包
+  .pipe(gulp.dest(`${publicPath}/dist${path.output}`)) // 输出打包
   .pipe(browserSync.reload({stream: true})) // browser-sync自动刷新
   // .pipe(notify({ message: 'browserify task complete' })) // 告知完成任务
 }
 
-function bundleJs2(path) {
-  browserify({
-    entries: [`${jsPath}${path.entry}.js`], // 入口文件
-    debug: true, // 告知Browserify在运行同时生成内联sourcemap用于调试
-  })
-  .transform("babelify", {presets: ["es2015"]}) // 转换es6代码，es7
-  .bundle() // 合并打包
-  .pipe(source(`${path.output}${path.outputName ? path.outputName : "bundle"}.js`)) // 将常规流转换为包含Stream的vinyl对象，并且重命名
-  .pipe(buffer()) // 将vinyl对象内容中的Stream转换为Buffer
-  .pipe(sourcemaps.init({loadMaps: true})) // 从 browserify 文件载入 map
-  .pipe(uglify())
-  .pipe(sourcemaps.write('.')) // 写入 .map 文件
-  .pipe(gulp.dest(`./static/dist/static/dist/dist/${path.outputName}/`)) // 输出打包
-  .pipe(browserSync.reload({stream: true})) // browser-sync自动刷新
-}
 // 生成多文件
 const jsEntryPath = [{
-  entry: '/index/main',
+  entry: '/index/main.js',
   output: '/js/index/',
-  outputName: 'index'
+  outputName: 'index.js'
 }, {
-  entry: '/form/login',
+  entry: '/form/login.js',
   output: '/js/form/',
-  outputName: 'login'
+  outputName: 'login.js'
 }, {
-  entry: '/form/register',
+  entry: '/form/register.js',
   output: '/js/form/',
-  outputName: 'register'
+  outputName: 'register.js'
 }]
 // js
 gulp.task('js', ['lint'], ()=> {
   jsEntryPath.forEach((v) => {
-    bundleJs(v)
-  })
-})
-
-gulp.task('js2', ['lint'], ()=> {
-  jsEntryPath.forEach((v) => {
-    bundleJs2(v)
+    buildJs(v)
   })
 })
 
@@ -119,8 +105,8 @@ gulp.task('sass', function() {
     .pipe(autoprefixer({ 
       browsers: ['last 2 versions', 'last 3 Explorer versions']
     })) // 自动补全前缀
-    .pipe(cleanCSS({compatibility: 'ie9'})) // 压缩文件
-    .pipe(gulp.dest('./static/dist/css'))
+    .pipe(gulpif(ifUglify, cleanCSS({compatibility: 'ie9'}))) // 压缩文件
+    .pipe(gulp.dest(`${publicPath}/dist/css`))
     .pipe(browserSync.stream())
     // .pipe(notify('CSS Task Complete!'))
 })
@@ -129,18 +115,22 @@ gulp.task('sass', function() {
 gulp.task('images', function() {
   gulp.src([`${imagePath}/*`, `${imagePath}/*/*`])
     // 压缩图片
-    .pipe(imagemin({
+    .pipe(gulpif(ifUglify, imagemin({
       optimizationLevel: 5, //类型：Number  默认：3  取值范围：0-7（优化等级）
       progressive: true, //类型：Boolean 默认：false 无损压缩jpg图片
       interlaced: true, //类型：Boolean 默认：false 隔行扫描gif进行渲染
       multipass: true //类型：Boolean 默认：false 多次优化svg直到完全优化
-    }))
+    })))
     .pipe(gulp.dest('./static/images'))
+})
+
+gulp.task('_build', function() {
+  ifUglify = true
 })
 
 // 监视文件变动
 gulp.task('watch', ['server'])
 
-gulp.task('build', ['js', 'sass', 'images'])
+gulp.task('build', ['_build', 'js', 'sass', 'images'])
 
-gulp.task('online', ['sass', 'images', 'js2'])
+// gulp.task('online', ['sass', 'images', 'js2'])
