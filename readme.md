@@ -1,8 +1,8 @@
-# 这是一个H5拍照，编辑图片，生成图片的DEMO
+# 这是一个H5 图片处理的网站
 
-> 这个demo，主要是记录我在移动端拍照，处理图片一些功能的总结。现在开始进行二次开发，添加个人用户和相册功能。
+> 移动端处理图片的网站，使用 canvas 对图片进行大小修改，可以添加滤镜和涂鸦。使用 Nodejs，添加一个小型后台，可以注册登录，查看个人相册等。
 
-这里是[demo](http://canvas-image-processing.rni-l.com)链接，移动端的，欢迎注册使用。 
+这里是[线上链接](http://canvas-image-processing.rni-l.com)链接，移动端的，欢迎注册使用。 
 
 ## 如何进行开发
 
@@ -12,15 +12,16 @@
     2. npm i // cnpm i
     3. gulp build
     4. cp _config.js config.js
-    5. `npm run start` (开启node服务)
-    6. 另开一个窗口，`npm run dev` (进行文件的监听)
+    5. npm run start (开启node服务)
+    6. gulp build
+    7. 另开一个窗口，npm run dev（进行开发）
 
 ## 主要功能
 
 ### 1.3版本（挖坑中）
 
 * 修改页面样式，添加图标，美化页面
-* 弃用验证码功能，改用发送邮件进行验证（node-canvas 配置太麻烦了）
+* 改善后台代码结构
 * 使用 mocha、chai 编写单元测试
 * ~~规范好后台的api，编写一个api文档~~
 
