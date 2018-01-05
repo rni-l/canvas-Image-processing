@@ -23,9 +23,9 @@ const Config = require('./config.js')
 
 // 路径
 const publicPath = './static'
-  jsPath = './src/js'
-  cssPath = './src/css',
-  imagePath = './src/images'
+  jsPath = './app/src/js'
+  cssPath = './app/src/css',
+  imagePath = './app/src/images'
 
 // 是否压缩文件
 let ifUglify = false

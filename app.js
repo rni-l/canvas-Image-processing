@@ -7,12 +7,17 @@ const bodyParser = require('body-parser')
 const session = require('express-session')
 const printLog = require('./lib/util/printLog.js')
 const config = require('./config')
+const serverConfig = require('./server-config.js')
 const app = express()
+
+global.serverConfig = serverConfig
+
 // 设置模板引擎
-app.set('views', path.join(__dirname, 'views'))
+app.set('views', path.join(__dirname, 'app/views'))
 app.set('view engine', 'pug')
 
 app.use(favicon(path.join(__dirname, 'static', 'favicon.ico')))
+
 // 设置长度
 app.use(bodyParser.json({limit: '50mb'}))
 app.use(bodyParser.urlencoded({limit: '50mb', extended: false}))
@@ -24,7 +29,7 @@ app.use(express.static(path.join(__dirname, 'static')))
 app.use(session({
   secret: config.sessionSecret,
   cookie: { maxAge: config.sessionExpire },
-  resave: true,
+  resave: true, 
   saveUninitialized: true
 }))
 
@@ -37,8 +42,8 @@ require('./lib/util/cleanDbData.js')()
 // API 转发
 // app.use('/api/*',require('./util/middleware')(config.serverUrl))
 
-app.use(require('./routes/index'))
-app.use(require('./routes/api'))
+app.use(require(`${serverConfig.ROUTES}/index`))
+app.use(require(`${serverConfig.ROUTES}/api`))
 
 // 如果执行到这步，说明没有匹配到路由，404
 app.use(function(req, res) {
