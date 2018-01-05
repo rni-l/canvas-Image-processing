@@ -1,16 +1,17 @@
-const express = require('express')
-const path = require('path')
-const favicon = require('serve-favicon')
-const log4js = require('log4js')
-const cookieParser = require('cookie-parser')
-const bodyParser = require('body-parser')
-const session = require('express-session')
-const printLog = require('./lib/util/printLog.js')
-const config = require('./config')
-const serverConfig = require('./server-config.js')
-const app = express()
+import express from 'express'
+import path from 'path'
+import favicon from 'serve-favicon'
+import log4js from 'log4js'
+import cookieParser from 'cookie-parser'
+import bodyParser from 'body-parser'
+import session from 'express-session'
+import printLog from './lib/util/printLog.js'
+import config from './config'
+import serverConfig from './server-config.js'
+import routerIndex from './lib/routes/index.js'
+import routerApi from './lib/routes/api.js'
 
-global.serverConfig = serverConfig
+const app = express()
 
 // 设置模板引擎
 app.set('views', path.join(__dirname, 'app/views'))
@@ -37,13 +38,13 @@ app.use(session({
 printLog.init(app)
 
 // 添加定时任务
-require('./lib/util/cleanDbData.js')()
+// require('./lib/util/cleanDbData.js')()
 
 // API 转发
 // app.use('/api/*',require('./util/middleware')(config.serverUrl))
 
-app.use(require(`${serverConfig.ROUTES}/index`))
-app.use(require(`${serverConfig.ROUTES}/api`))
+app.use(routerIndex)
+app.use(routerApi)
 
 // 如果执行到这步，说明没有匹配到路由，404
 app.use(function(req, res) {
@@ -75,7 +76,8 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 // start server
-if (!module.parent) {
+// console.log(module.parent)
+if (module.parent) {
   const port = Number(process.env.PORT || config.port)
   const server = app.listen(port, () => {
     console.log('-----------------------------------------------------')
@@ -85,4 +87,4 @@ if (!module.parent) {
   })
 }
 
-module.exports = app
+// module.exports = app

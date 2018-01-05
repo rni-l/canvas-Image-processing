@@ -59,3 +59,18 @@
 5. 最后就是生成图片，用户可以保存到本地
 6. 点击相册，会显示用户生成过的图片
 
+## 项目大概功能
+
+前端使用 jquery，进行普通的 DOM 文件操作，主要还是使用 canvas，对图片进行处理
+
+后端使用 nodejs，使用 express 和 mongodb。mongodb 使用 mongoose 库进行操作。
+
+后面会接入微信授权登录，使用七牛，对图片处理管理
+
+## 项目文件夹配置
+
+* lib/controllers:
+* lib/model, 数据库操作
+* app/view, 视图文件
+
+

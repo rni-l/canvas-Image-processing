@@ -3,18 +3,20 @@
   "version": "1.3.0",
   "description": "canvas image processing",
   "author": "yiiouo",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
-    "start": "cross-env NODE_ENV=development node app.js",
+    "start": "cross-env NODE_ENV=development ./node_modules/_babel-cli@6.26.0@babel-cli/bin/babel-node.js index.js",
     "buiild": "gulp build",
     "dev": "gulp server"
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-eslint": "^7.2.3",
     "babel-plugin-transform-es2015-literals": "^6.22.0",
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-es2015": "^6.24.1",
+    "babel-register": "^6.26.0",
     "babelify": "^7.3.0",
     "bluebird": "^3.5.0",
     "body-parser": "^1.17.2",
