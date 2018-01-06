@@ -1,36 +1,42 @@
-.form{
-  &-title{
-    color: $bcTxt;
+.form {
+  &-title {
+    color: #fff;
     text-align: center;
-    font-size: to(48);
-    font-weight: bold;
-    padding: to(50) 0;
-    letter-spacing: 2px;
+    font-size: to(64);
+    padding: to(50) 0 to(20);
+    margin: 0 to(30) to(30);
+    letter-spacing: 4px;
+    border-bottom: 1px solid currentColor;
   }
-  &-wrap{
+  &-wrap {
     padding: 0 to(20);
+    .codePic {
+      width: 100%;
+    }
   }
-  &-layout{
+  &-layout {
     display: block;
     margin-bottom: to(40);
-    padding: 0 to(10);
+    padding: 0 to(10) to(20);
     @include all_center;
-    &-txt, &-input{
+    border-bottom: 1px solid #fff;
+    &-txt,
+    &-input {
       display: block;
     }
-    &-left{
+    &-left {
       display: flex;
       align-items: center;
       justify-content: space-between;
       width: to(80);
-      img{
+      img {
         width: to(50);
       }
     }
-    &-txt{
+    &-txt {
       font-size: to(28);
     }
-    &-input{
+    &-input {
       flex: 1;
       border: solid 1px #D8D7D7;
       padding: to(10) 0;
@@ -38,36 +44,35 @@
       font-size: to(28);
       border-radius: to(20);
       color: #fff;
-      &::-webkit-input-placeholder{
+      &::-webkit-input-placeholder {
         color: #fff;
       }
     }
   }
-  &-submit{
+  &-submit {
     padding: to(5) to(80);
     border: solid 1px currentColor;
     color: #D8D7D7;
     font-size: to(42);
-  }
-  // 注册成功
-  &-success{
+  } // 注册成功
+  &-success {
     text-align: center;
     font-size: to(42);
     padding-top: to(50);
-    &-title{
+    &-title {
       font-size: to(56);
       color: $bcTxt;
       padding-bottom: to(50);
     }
-    &-error{
+    &-error {
       color: $errorColor;
       padding: to(30) 0;
     }
-    &-link{
+    &-link {
       color: $bcTxt;
       padding-bottom: to(10);
       position: relative;
-      &::after{
+      &::after {
         content: '';
         position: absolute;
         bottom: 0;
@@ -78,16 +83,15 @@
         background: currentColor;
       }
     }
-  }
-  // 错误信息
-  &-errorMsg{
+  } // 错误信息
+  &-errorMsg {
     padding: 0 0 to(40);
     text-align: center;
     color: $errorColor;
     font-weight: bold;
     font-size: to(42);
   }
-  &-prompt{
+  &-prompt {
     height: to(120);
     line-height: to(120);
     color: $errorColor;

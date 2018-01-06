@@ -1,8 +1,8 @@
-.home{
-  &-wrap{
+.home {
+  &-wrap {
     @include all_center;
     padding: to(100) 0 0;
-    h1{
+    h1 {
       color: $bcTxt;
       font-size: to(36);
       font-weight: normal;
