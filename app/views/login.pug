@@ -1,9 +1,10 @@
 extends ./layout.pug
 block content
-  main.page-bg
+  main(class='page-bg form-changeBg')
     div.login
       div.login-wrap
-        div.form-title 登录
+        div.form-iconTitle
+          img(src='/images/icon/login.png')
       form(class='form-wrap' method='post' action='/login')
         -var codeId = codeData.id
         -console.log('login-data::', data)
@@ -16,7 +17,7 @@ block content
           .form-layout-left
             img(src='/images/icon/password.png')
           input(type='password' name='pwd' class='form-layout-input form-layout-input-pwd' placeholder='请输入密码')
-        label(class='form-layout')
+        label(class='form-layout form-codePicLayout')
           img(class='codePic' src= codeData.img)
         label.form-layout
           .form-layout-left

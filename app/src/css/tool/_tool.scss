@@ -1,34 +1,170 @@
 // 兼容ie10以上
 //清除内外边距 
-body, h1, h2, h3, h4, h5, h6, p, div,a,img,ul, ol, li, i ,
-fieldset, button, input, textarea, table, tr, th, td ,fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, figcaption, figure, address , blockquote,
-footer, header, hgroup, menu, nav, section, summary,
-time, mark, audio, video ,object , embed , param{margin: 0;padding: 0;}
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+div,
+a,
+img,
+ul,
+ol,
+li,
+i,
+fieldset,
+button,
+input,
+textarea,
+table,
+tr,
+th,
+td,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+figcaption,
+figure,
+address,
+blockquote,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section,
+summary,
+time,
+mark,
+audio,
+video,
+object,
+embed,
+param {
+  margin: 0;
+  padding: 0;
+}
 
-article,aside,canvas,details,figcaption,figure,
-footer,header,hgroup,menu,nav,section,summary ,time{ 
-    display:block;
+article,
+aside,
+canvas,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section,
+summary,
+time {
+  display: block;
 }
-body{
-	line-height: 1;
+
+body {
+  line-height: 1;
 }
+
 //获取焦点时，取消outline
-button:focus,input:focus,select:focus,textarea:focus{
-	outline: 0;
+button:focus,
+input:focus,
+select:focus,
+textarea:focus {
+  outline: 0;
 }
-//让所有的h标签和表单元素统一大小
-h1,h2,h3,h4,h5,h6,button, input, select, textarea{font-size:100%;}
-ul,ol{list-style:none;}
-em{font-style:normal;}
-a{text-decoration: none;color:black;font-size:100%;color:inherit;}
-a,img{display: block;}
-img{border:0;outline: 0;}
-input, button{background:transparent;border:0;outline: 0;}
-html{font-size:100%;font-family:"Microsoft YaHei",Arial,Helvetica,sans-serif;}
 
-@mixin fm_h{font-family:SimHei,'黑体';}
-@mixin fm_a{font-family:Arial;}
-.fm_h{@include fm_h;}
-.fm_a{@include fm_a;}
+//让所有的h标签和表单元素统一大小
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+button,
+input,
+select,
+textarea {
+  font-size: 100%;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+em {
+  font-style: normal;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+  font-size: 100%;
+  color: inherit;
+}
+
+a,
+img {
+  display: block;
+}
+
+img {
+  border: 0;
+  outline: 0;
+}
+
+input,
+button {
+  background: transparent;
+  border: 0;
+  outline: 0;
+}
+
+input {
+  &:focus,
+  &:active {
+    background: transparent;
+  }
+  &:-webkit-autofill {
+    -webkit-text-fill-color: #fff !important;
+    transition: background-color 5000s ease-in-out 0s;
+  }
+}
+
+html {
+  font-size: 100%;
+  font-family: "Microsoft YaHei", Arial, Helvetica, sans-serif;
+}
+
+@mixin fm_h {
+  font-family: SimHei, '黑体';
+}
+
+@mixin fm_a {
+  font-family: Arial;
+}
+
+.fm_h {
+  @include fm_h;
+}
+
+.fm_a {
+  @include fm_a;
+}

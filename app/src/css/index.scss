@@ -1,22 +1,25 @@
 @import 'tool/common';
-html, body, .main{
-	height: 100%;
-}
-body{
-	-webkit-touch-callout: none;
-	-webkit-text-size-adjust: none;
-	-webkit-user-select: none;
-	-webkit-highlight: none;
-	-webkit-tap-highlight-color: rgba(0,0,0,0);
+html,
+body,
+.main {
+  height: 100%;
 }
 
-.page-bg{
-  background: $bcBg;
+body {
+  -webkit-touch-callout: none;
+  -webkit-text-size-adjust: none;
+  -webkit-user-select: none;
+  -webkit-highlight: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.page-bg {
+  background: linear-gradient(0deg, #5d70a7, #91BBD4);
   height: 100vh;
 }
+
 // components
 @import 'components/header';
-
 // page
 @import 'home';
 @import 'play';

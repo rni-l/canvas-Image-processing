@@ -2,7 +2,6 @@ extends ./layout.pug
 block content
   main.page-bg
     div.form-success
-      -console.log(status)
       - if (status) 
         - if (status.errCode === 200)
           div(class='form-success-title') 注册成功
