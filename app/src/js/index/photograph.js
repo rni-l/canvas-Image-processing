@@ -14,7 +14,7 @@ let isCreatePic = false // 是否生成了图片
 /*
  *图片上传处理过程
  *图片上传成功后 => 获取元数据 => 转化为base64 => 修正图片的宽高，显示的方向和图片的内存大小
-*/
+ */
 
 function toBlob(dataURI) {
   let byteString,
@@ -35,10 +35,12 @@ function toBlob(dataURI) {
   for (var i = 0; i < byteString.length; i++) {
     ia[i] = byteString.charCodeAt(i)
   }
-  
+
   console.log(mimeString)
 
-  return new Blob([ia], {type: mimeString})
+  return new Blob([ia], {
+    type: mimeString
+  })
 }
 
 // formData上传图片
@@ -74,9 +76,6 @@ function createImg(e) {
   opts.oShowImg.src = oCan.toDataURL('image/png')
   opts.oShowImg.style.display = 'block'
   opts.oShowImg.style.position = 'static'
-  // $.post('/api/savePic', {id: document.querySelector('#user').getAttribute('userId'), url: opts.oShowImg.src}, (data) => {
-  //   console.log(data)
-  // })
   ajaxUpload(opts.oShowImg.src, document.querySelector('#user').getAttribute('userId'))
   document.querySelector('.successPage').style.display = 'flex'
   document.querySelector('.main_bottom').innerHTML = '<p class="success_txt">生成图片成功！长按可保存图片</p>'
@@ -84,13 +83,11 @@ function createImg(e) {
 
 // 图片load回调方法
 function cacheImg(url, callback) {
-  console.log('load')
   if (!url) {
     callback.call()
     return false
   }
   const img = new Image()
-  // img.crossOrigin = "Anonymous"
   img.onload = () => {
     // 图片加载完，执行回调
     callback.call(img)
@@ -115,13 +112,16 @@ function showFun() {
 }
 
 // 计算图片的宽高
-function computeWidthAndHeight(data) {
-  let drawWidth = data.drawWidth,
-    drawHeight = data.drawHeight,
+function computeWidthAndHeight({
+  dw,
+  dh,
+  Orientation
+}) {
+  let drawWidth = dw,
+    drawHeight = dh,
     degree = 0,
     maxSide = Math.max(drawWidth, drawHeight)
-  const params = data.params,
-    size = 2048
+  const size = 2048
 
   // 如果当期size大于2M，按比例修正到2M以下
   if (maxSide > size) {
@@ -145,7 +145,7 @@ function computeWidthAndHeight(data) {
 
   const context = canvas.getContext('2d')
   // 判断图片方向，重置canvas大小，确定旋转角度，iphone默认的是home键在右方的横屏拍摄方式
-  switch (params.data.Orientation) {
+  switch (Orientation) {
   // iphone横屏拍摄，此时home键在左侧
   case 3:
     degree = 180
@@ -174,32 +174,36 @@ function computeWidthAndHeight(data) {
    *degress: 渲染的方向
    *drawWidth: 修正后的宽度
    *.......
-  */
+   */
   return {
-    degree: degree,
-    drawWidth: drawWidth,
-    drawHeight: drawHeight,
-    context: context,
-    canvas: canvas
+    degree,
+    drawWidth,
+    drawHeight,
+    context,
+    canvas
   }
 }
 
 // 获取处理好的图片数据
-function getImgData(params) {
-  cacheImg(params.img, function() {
+function getImgData({
+  img,
+  data,
+  next
+}) {
+  cacheImg(img, function () {
     // 以下改变一下图片大小
     // 获取宽高中，最大的值
     let output = computeWidthAndHeight({
-      drawWidth: params.data.PixelXDimension || this.naturalWidth,
-      drawHeight: params.data.PixelYDimension || this.naturalHeight,
-      params: params
+      dw: data.PixelXDimension || this.naturalWidth,
+      dh: data.PixelYDimension || this.naturalHeight,
+      Orientation: data.Orientation
     })
     // 使用canvas旋转校正
     output.context.rotate(output.degree * Math.PI / 180)
     // 渲染新的图片
     output.context.drawImage(this, 0, 0, output.drawWidth, output.drawHeight)
     // 生成校正后图片
-    params.next(output.canvas.toDataURL('image/png'))
+    next(output.canvas.toDataURL('image/png'))
     output = null
   })
 }
@@ -256,13 +260,13 @@ function uploadFile() {
   opts.showLoading('block')
   const reader = new FileReader()
   new Promise((resolve) => {
-  // 获取图片的元数据
-    EXIF.getData(file, function() {
+    // 获取图片的元数据
+    EXIF.getData(file, function () {
       exifData = EXIF.getAllTags(this)
       resolve()
     })
   }).then(() => {
-    reader.onload = function() {
+    reader.onload = function () {
       // 图片信息获取完毕
       // 修正图片方向
       getImgData({

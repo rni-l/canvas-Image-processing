@@ -14,8 +14,19 @@ body {
 }
 
 .page-bg {
-  background: linear-gradient(0deg, #5d70a7, #91BBD4);
+  background: linear-gradient(0deg, #3252af, #5d70a7, #91BBD4);
   height: 100vh;
+  background-position: 100% 0;
+  animation: bganimation 4s infinite ease-in-out alternate;
+}
+
+@keyframes bganimation {
+  0% {
+    background-size: 100% 300%;
+  }
+  100% {
+    background-size: 100% 100%;
+  }
 }
 
 // components

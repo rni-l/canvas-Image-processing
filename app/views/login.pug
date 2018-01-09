@@ -27,6 +27,7 @@ block content
         div.form-errorMsg= data.status.message
       -}
       div(class='level_center')
-        button(class='form-submit' type='submit') 登录
+        .form-submit
+          button(class='form-submit-btn' type='submit') 登录
   block script_b
     script(src='/dist/js/form/login.js')

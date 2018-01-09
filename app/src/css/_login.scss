@@ -54,13 +54,56 @@
   &-codePicLayout {
     border-bottom: 0;
   }
+  $waveW: 50px;
+  $waveH: 50px;
   &-submit {
-    padding: to(5) to(80);
-    border: solid 1px currentColor;
-    color: #fff;
-    font-size: to(42);
-    border-radius: 10px;
-    box-shadow: 0 0 5px 1px rgb(218, 216, 216);
+    position: relative;
+    width: $waveW;
+    height: $waveH;
+    background-color: rgb(118, 218, 255);
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      width: $waveW * 2;
+      height: $waveH * 2;
+      top: 0;
+      left: 50%;
+      background-color: rgba(255, 255, 255, .4);
+      border-radius: 45%;
+      transform: translate(-50%, -70%) rotate(0);
+      animation: rotate 6s linear infinite;
+      z-index: 10;
+    }
+    &::after {
+      border-radius: 49%;
+      background-color: rgba(255, 255, 255, .7);
+      transform: translate(-50%, -70%) rotate(0);
+      animation: rotate 10s linear -5s infinite;
+      z-index: 20;
+    }
+    &-btn {
+      position: relative;
+      z-index: 21;
+      font-size: to(28);
+      color: rgb(18, 82, 155);
+      text-align: center;
+      display: block;
+      width: 100%;
+    }
+  }
+  @keyframes rotate {
+    50% {
+      transform: translate(-50%, -73%) rotate(180deg);
+    }
+    100% {
+      transform: translate(-50%, -70%) rotate(360deg);
+    }
   } // 注册成功
   &-success {
     text-align: center;
@@ -105,17 +148,5 @@
     text-align: center;
     letter-spacing: 2px;
     font-size: to(42);
-  }
-  &-changeBg {
-    background-position: 100% 0;
-    animation: bganimation 5s infinite ease-in-out alternate;
-  }
-  @keyframes bganimation {
-    0% {
-      background-size: 100% 300%;
-    }
-    100% {
-      background-size: 100% 100%;
-    }
   }
 }

@@ -7,7 +7,9 @@
     "amd": true
   },
   "parser": "babel-eslint",
-  "ecmaFeatures": { "modules": true },
+  "ecmaFeatures": {
+    "modules": true
+  },
   "parserOptions": {
     "ecmaVersion": 6
   },
@@ -21,7 +23,7 @@
     "wrap-iife": "off", // 关闭：要求 IIFE 使用括号括起来
     "max-len": ["error", 160], // 强制一行的最大长度 160
     "camelcase": "off", // 关闭：强制使用骆驼拼写法命名约定
-    "space-before-function-paren": ["error", "never"], // 禁止函数圆括号之前有一个空格
+    "space-before-function-paren": 0, // 禁止函数圆括号之前有一个空格
     "no-undef": 0,
     "one-var": 0,
     "linebreak-style": 0 // 解决windows出现CRLF错误
