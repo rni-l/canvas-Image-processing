@@ -5,7 +5,7 @@
   "author": "yiiouo",
   "main": "index.js",
   "scripts": {
-    "start": "cross-env NODE_ENV=development ./node_modules/babel-cli lib/index.js",
+    "start": "cross-env NODE_ENV=development ./node_modules/_babel-cli@6.26.0@babel-cli/bin/babel-node.js lib/index.js",
     "build": "babel lib -d dist --presets es2015",
     "gulp-build": "gulp build",
     "gulp-dev": "gulp server"
