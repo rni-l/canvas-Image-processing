@@ -43,7 +43,8 @@
       padding: to(20) 0;
       text-indent: .5em;
       font-size: to(28);
-      border-radius: to(20);
+      border-bottom-left-radius: to(20);
+      border-bottom-right-radius: to(20);
       color: #fff;
       border-bottom: 1px solid #D8D7D7;
       &::-webkit-input-placeholder {
@@ -66,6 +67,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    transform-style: preserve-3d;
     &::before,
     &::after {
       content: "";
@@ -76,15 +78,15 @@
       left: 50%;
       background-color: rgba(255, 255, 255, .4);
       border-radius: 45%;
-      transform: translate(-50%, -70%) rotate(0);
-      animation: rotate 6s linear infinite;
+      transform: translate3d(-50%, -70%, 0) rotate(0);
+      animation: rotate 6s linear infinite alternate;
       z-index: 10;
     }
     &::after {
       border-radius: 49%;
       background-color: rgba(255, 255, 255, .7);
-      transform: translate(-50%, -70%) rotate(0);
-      animation: rotate 10s linear -5s infinite;
+      transform: translate3d(-50%, -73%, 0) rotate(0);
+      animation: rotate 10s linear -5s infinite alternate;
       z-index: 20;
     }
     &-btn {
@@ -99,10 +101,10 @@
   }
   @keyframes rotate {
     50% {
-      transform: translate(-50%, -73%) rotate(180deg);
+      transform: translate3d(-50%, -73%, 0) rotate(180deg);
     }
     100% {
-      transform: translate(-50%, -70%) rotate(360deg);
+      transform: translate3d(-50%, -70%, 0) rotate(360deg);
     }
   } // 注册成功
   &-success {
