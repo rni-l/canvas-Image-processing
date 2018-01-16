@@ -5,8 +5,8 @@
   "author": "yiiouo",
   "main": "index.js",
   "scripts": {
-    "debug": "node --inspect=9229 ./index.js",
-    "start": "cross-env NODE_ENV=development npm run build && node ./dist/index.js",
+    "debug": "cross-env NODE_ENV=development node --inspect=9229 ./index.js",
+    "start": "cross-env NODE_ENV=development node ./index.js",
     "build": "babel lib -d dist --presets es2015",
     "gulp-build": "gulp build",
     "gulp-dev": "gulp server"
