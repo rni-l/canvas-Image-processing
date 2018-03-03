@@ -1,7 +1,7 @@
 import opts from './opts'
 import updateDrawStrokes from './draw'
-import ImageFilters from './../../plugins/imagefilters'
-import filterChooseData from './../../utils/filterData'
+import ImageFilters from './../plugins/imagefilters'
+import filterChooseData from './../utils/filterData'
 
 // 缓存滤镜信息数据
 const filterData = {

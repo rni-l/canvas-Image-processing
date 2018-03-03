@@ -1,4 +1,4 @@
-import EXIF from './../../plugins/exif'
+import EXIF from './../plugins/exif'
 import opts from './opts'
 
 const oCan = opts.oCan,
@@ -76,8 +76,7 @@ function createImg(e) {
   opts.oShowImg.src = oCan.toDataURL('image/png')
   opts.oShowImg.style.display = 'block'
   opts.oShowImg.style.position = 'static'
-  ajaxUpload(opts.oShowImg.src, document.querySelector('#user').getAttribute('userId'))
-  document.querySelector('.successPage').style.display = 'flex'
+  // document.querySelector('.successPage').style.display = 'flex'
   document.querySelector('.main_bottom').innerHTML = '<p class="success_txt">生成图片成功！长按可保存图片</p>'
 }
 
@@ -254,8 +253,6 @@ function uploadFile() {
     alert('图片过大，请选择相对较小的图片')
     return false
   }
-  // 隐藏链接按钮
-  document.querySelector('.toPersonPic').style.display = 'none'
   // 图片处理中，提示层出现
   opts.showLoading('block')
   const reader = new FileReader()

@@ -1,5 +1,5 @@
 // 入口文件
-import Fastclick from './../../plugins/fastclick'
+import Fastclick from './../plugins/fastclick'
 import _opts from './opts'
 import './photograph'
 import './draw'

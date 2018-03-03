@@ -18,14 +18,11 @@ const browserify = require("browserify"),
   source = require('vinyl-source-stream'),
   buffer = require('vinyl-buffer')
 
-// 配置文件
-const Config = require('./config.js')
-
 // 路径
 const publicPath = './static'
-  jsPath = './app/src/js'
-  cssPath = './app/src/css',
-  imagePath = './app/src/images'
+  jsPath = './src/js'
+  cssPath = './src/css',
+  imagePath = './src/images'
 
 // 是否压缩文件
 let ifUglify = false
@@ -37,9 +34,7 @@ gulp.task('server', function() {
   ifUglify = false
   // 初始化
   browserSync.init({
-    proxy: 'localhost:' + Config.port, // 开启代理
-    browser: "chrome", // 打开浏览器
-    logLevel: "debug"
+    server: './static'
   })
   // watch,当文件变化后，自动生成相应的文件
   gulp.watch([`${jsPath}/*.js`, `${jsPath}/*/*.js`], ['js'])
@@ -78,17 +73,9 @@ function buildJs(path) {
 
 // 生成多文件
 const jsEntryPath = [{
-  entry: '/index/main.js',
-  output: '/js/index/',
+  entry: '/main.js',
+  output: '/js/',
   outputName: 'index.js'
-}, {
-  entry: '/form/login.js',
-  output: '/js/form/',
-  outputName: 'login.js'
-}, {
-  entry: '/form/register.js',
-  output: '/js/form/',
-  outputName: 'register.js'
 }]
 // js
 gulp.task('js', ['lint'], ()=> {
