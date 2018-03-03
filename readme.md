@@ -1,4 +1,4 @@
-# 这是一个H5 图片处理的网站
+# 这是一个H5 图片处理的项目
 
 > 移动端处理图片的网站，使用 canvas 对图片进行大小修改，可以添加滤镜和涂鸦。使用 Nodejs，添加一个小型后台，可以注册登录，查看个人相册等。
 
@@ -6,71 +6,12 @@
 
 ## 如何进行开发
 
-注意，如果要在本地运行的话，要配置好 `node-canvas` ，不然会运行不了。这里提供了一个没有使用 `node-canvas` 的旧版本， `clone` Tags v1.1版本运行就好
-
-    1. clone git@github.com:yiiouo/canvas-Image-processing.git
-    2. npm i // cnpm i
-    3. gulp build
-    4. cp _config.js config.js
-    5. npm run start (开启node服务)
-    6. gulp build
-    7. 另开一个窗口，npm run dev（进行开发）
+1. clone git@github.com:yiiouo/canvas-Image-processing.git
+2. npm i // cnpm i
+3. gulp build
+4. 另开一个窗口，npm run dev（进行开发）
 
 ## 主要功能
 
-### 1.3版本（挖坑中）
-
-* 修改页面样式，添加图标，美化页面
-* 改善后台代码结构
-* 使用 mocha、chai 编写单元测试
-* ~~规范好后台的api，编写一个api文档~~
-
-### 1.2版本
-
-* `windows` 和 `centos` 环境下，配置 `node-canvas` -- 完成
-* 验证码功能 -- 完成
-* 配置到 `centos` -- 完成
-
-### 1.1版本
-
-* 增加 `es-lint` ，优化代码结构 -- 完成
-* 修改和美化版面 -- 完成
-* 使用 `gulp` 替换 `webpack` ( `gulp` 进行多页面搭建相对容易点) -- 完成
-* 增加用户登录注册功能，可以有自己的小相册 -- 完成
-* 使用 `mongodb` 数据库，使用 `mongoose` 进行数据操作 -- 完成
-* 添加邮箱功能，注册成功会发送邮件给用户 -- 完成
-
-### 1.0版本
-
-* 上传图片 -- 完成
-* 改变图片展示的方式（居中，填充，拉伸）-- 完成
-* 画布的涂鸦功能 -- 完成
-* 撤销涂鸦功能 -- 完成
-* 图片滤镜效果 -- 完成
-* 生成图片功能 -- 完成
-* 离线功能 -- 完成
-
-## 使用流程
-
-1. 用户注册登录
-2. 用户拍照或者上传图片
-3. 用户可以在canvas进行涂鸦，选择笔触的粗细，颜色[（自己写了个颜色选择器）](https://github.com/yiiouo/canvas-colorPicker)等
-4. 可以选择滤镜效果，这里使用了[一个滤镜插件](https://github.com/arahaya/ImageFilters.js)。这个滤镜插件有十几种选择，每种会有不同的参数
-5. 最后就是生成图片，用户可以保存到本地
-6. 点击相册，会显示用户生成过的图片
-
-## 项目大概功能
-
-前端使用 jquery，进行普通的 DOM 文件操作，主要还是使用 canvas，对图片进行处理
-
-后端使用 nodejs，使用 express 和 mongodb。mongodb 使用 mongoose 库进行操作。
-
-后面会接入微信授权登录，使用七牛，对图片处理管理
-
-## 项目文件夹配置
-
-* lib/controllers:
-* lib/model, 数据库操作
-* app/view, 视图文件
-
+上传图片，进行涂鸦、滤镜，最后生成图片的项目。
 
