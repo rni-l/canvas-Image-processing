@@ -43,24 +43,6 @@ function toBlob(dataURI) {
   })
 }
 
-// formData上传图片
-function ajaxUpload(url, id) {
-  const form = new FormData()
-  form.append('url', toBlob(url))
-  form.append('id', id)
-  $.ajax({
-    url: '/api/savePic',
-    type: 'POST',
-    cache: false,
-    data: form,
-    processData: false,
-    contentType: false,
-    success: data => {
-      console.log(data)
-    }
-  })
-}
-
 // 生成图片
 function createImg(e) {
   e.preventDefault()

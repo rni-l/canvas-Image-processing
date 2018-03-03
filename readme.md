@@ -9,7 +9,7 @@
 1. clone git@github.com:yiiouo/canvas-Image-processing.git
 2. npm i // cnpm i
 3. gulp build
-4. 另开一个窗口，npm run dev（进行开发）
+4. gulp watch（进行开发）
 
 ## 主要功能
 
